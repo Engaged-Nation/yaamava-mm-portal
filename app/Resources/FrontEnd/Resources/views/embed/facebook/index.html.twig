@@ -1,0 +1,199 @@
+<link type="text/css" rel="stylesheet" href="{{ fhost }}/css/facebook.css">
+<script>
+    EngagedNation.RequireJS.require(
+        ["jquery_1_10", "eventData"],
+        function($, EventData)
+        {
+            var appid = '{{ appid }}';
+
+            if($('#facebook-jssdk').length > 0 || typeof(FB) !== 'undefined' ){
+                FB.init({
+                    appId: appid,
+                    xfbml: true,
+                    cookie: true,
+                    status: true,
+                    version: 'v2.1'
+                });
+
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                }, true);
+            }
+            else {
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: appid,
+                        xfbml: true,
+                        cookie: true,
+                        status: true,
+                        version: 'v2.1'
+                    });
+
+                    FB.getLoginStatus(function (response) {
+                        statusChangeCallback(response);
+                    }, true);
+                };
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            }
+
+            window.fbLogin = function(redirect, element) {
+                $.lbxgrid({html: 'One moment while we gather your information.'});
+
+                FB.login(function (response) {
+                        if (response.authResponse) {
+                            accessToken = response.authResponse.accessToken;
+
+                            FB.api('/me', function (response) {
+                                fbLoginAuth(accessToken, redirect);
+                            });
+
+                        }
+                        else {
+                            $.lbxgrid({html: 'Sorry, but you either cancelled the login process or did not fully authorize associating your account with Facebook.'});
+                        }
+                    },
+                    {
+                        scope: 'publish_actions,publish_stream,email,user_friends,user_likes,user_games_activity,user_activities,offline_access'
+                    });
+            };
+
+            window.fbLogout = function() {
+                FB.getLoginStatus(function (response) {
+                    if (response.authResponse.accessToken) {
+                        $.ajax({
+                            dataType: 'jsonp',
+                            jsonp: 'callback',
+                            cache: false,
+                            url: '{{ fhost|e('js') }}/embed/index.php?embed=facebook&id={{ fhost|e('js') }}&pageid={{ pageid|e('js') }}&submit=true&accessToken=' + response.authResponse.accessToken + '&fbControl=logout',
+                            success: function (data) {
+                                if (data.html) {
+                                    console.log(data.html);
+
+                                    FB.logout(function (response) {
+                                        setTimeout(function () {
+                                            location.reload();
+                                        }, 2000);
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+
+
+                setTimeout(function () {
+                    location.reload();
+                }, 6000);
+            };
+
+            window.statusChangeCallback = function(response) {
+                if (response.status === 'connected') {
+                    {% if user %}
+                    if (response.authResponse) {
+                        $.ajax({
+                            dataType: 'jsonp',
+                            jsonp: 'callback',
+                            cache: false,
+                            url: '{{ fhost|e('js') }}/embed/index.php?embed=facebook&id={{ id|e('js') }}&pageid={{ pageid|e('js') }}&submit=true&accessToken=' + response.authResponse.accessToken + '&fbControl=session',
+                            success: function (data) {
+                                if (data.html) {
+                                    console.log(data.html);
+                                }
+                            }
+                        });
+                    }
+
+                    console.log('facebook connected');
+                    {% else %}
+                    FB.logout(function (response) {
+                        console.log('facebook logged out');
+                    });
+                    {% endif %}
+                }
+                else if (response.status === 'not_authorized') {
+                    console.log('facebook not authorized');
+                }
+                else {
+                    console.log('facebook ready');
+                }
+            };
+
+            window.checkLoginState = function() {
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                });
+            };
+
+            window.fbLoginAuth = function(accessToken, redirect) {
+
+                redirectTo = '';
+                if (redirect) {
+                    redirectTo = '&redirectTo=' + redirect;
+                }
+
+                $.ajax({
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    cache: false,
+                    url: '{{ fhost|e('js') }}/embed/index.php?embed=facebook&id={{ id|e('js') }}&pageid={{ pageid|e('js') }}&submit=true&accessToken=' + accessToken + '&fbControl=fblogreg&status=authorized{{ paramsfid }}' + redirectTo,
+                    success: function (data) {
+                        if (data.html) {
+                            $.lbxgrid({html: data.html});
+                        }
+                    },
+                    error: function () {
+                        $.lbxgrid({html: '{{ error }}'});
+                    }
+                });
+            };
+
+            window.fbcontrol = function(a, b) {
+                {% if user %}
+                $.ajax({
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    cache: false,
+                    url: '{{ fhost|e('js') }}/embed/index.php?embed=facebook&id={{ id|e('js') }}&pageid={{ pageid|e('js') }}&submit=true&jsonresponse=true&fbControl=qGraph&fbControlPointer=' + a + b,
+                    success: function (data) {
+                        if (data.message) {
+                            $.lbxgrid(
+                                {
+                                    html: data.message
+                                }
+                            );
+
+                            return;
+                        }
+
+                        if (data.publicid) {
+                            EngagedNation.Utility.triggerEvent(
+                                'EngagedNation:EarnMethod-Completed',
+                                new EventData()
+                                    .component.setAction('getInstantReward')
+                                    .prize.setPublicPrizeWeightId(data.publicid)
+                                    .extra.setData({
+                                    instantreward: data.instantreward,
+                                    uservoucherid: data.uservoucherid
+                                })
+                            );
+                        }
+                    },
+                    error: function () {
+                        $.lbxgrid({html: '{{ error }}'});
+                    }
+                });
+                {% endif %}
+            };
+        }
+    );
+</script>

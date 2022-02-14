@@ -1,0 +1,76 @@
+{% extends 'FrontEnd/Resources/views/embed/fzone/contents/includes/wheelgame/index/base.html.twig' %}
+
+{% block css %}
+    <link href="{{ fhost }}/css/fzone/wheel-game.css?{{ buildnumber }}" rel="stylesheet"/>
+    <style>
+        #confetti{
+            display: none !important;
+        }
+        #wheelgame-content {
+            background: url({{ s3url }}/images/games/wheelgame/wheelgame-starcityonly-bg.jpg);
+            background-repeat: no-repeat;
+        }
+
+        @media screen and (max-width: 991px) {
+            #wheelgame-content {
+                background: url({{ s3url }}/images/games/wheelgame/wheelgame-starcityonly-bg.jpg)!important;
+            }
+        }
+    </style>
+{% endblock css %}
+
+
+{% block display %}
+    <div {{ viewfrom }}>
+        <div id="wheelgame-content">
+            <div class="enPortal-row no-gutter">
+                <div class="enPortal-col-md-12">
+                    {% block wheelgame %}
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td id="wheelgame-itself" class="the_wheel" align="center" valign="center" style="vertical-align: top;">
+                                    <div id="wheelgame-indicator">
+                                        <img class="enPortal-img-responsive" src="{{ s3url }}/images/wheelgame/{{ cid }}/indicator.png"/>
+                                    </div>
+                                    <div id="centerGraphic"
+                                         style="margin-left:1px; margin-top:28px; position:absolute; z-index:50; width: 100%; top: 0px; left: 0px;">
+                                        <img class="enPortal-img-responsive" src="{{ s3url }}/images/wheelgame/{{ cid }}/game-images/center.png"/>
+                                    </div>
+                                    <canvas class="the_canvas" id="wheelgame" width="434" height="434"
+                                            style="margin-left: 10px; margin-right: 10px;">
+                                    </canvas>
+                                    <audio>
+                                        <source src="{{ src }}/assets/misc/beep.mp3"></source>
+                                        <source src="{{ src }}/assets/misc/beep.ogg"></source>
+                                    </audio>
+                                </td>
+                            </tr>
+                        </table>
+                    {% endblock wheelgame %}
+                    {% block result %}
+                        <div class="-results" style="min-height: 66px; background:none;">
+                            {% if user and completed %}
+                                {{ 'fzone.wheelgame.winnerTxt'|trans({'%awarded%' : awarded, '%points%' : points}, 'frontend')|raw }}
+                            {% endif %}
+                        </div>
+                    {% endblock result %}
+                    {{ 'fzone.wheelgame.marketing1'|trans({}, 'frontend')|raw }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        EngagedNation.RequireJS.require(
+            ["jquery_1_10"],
+            function ($) {
+                $(function () {
+                        EngagedNation.Config = EngagedNation.Config || {};
+                        EngagedNation.Config.InstantRewardComponentName = 'wheelgame';
+                        EngagedNation.Config.InstantRewardComponentId = '{{ wheelGameId|e('js') }}';
+                    }
+                );
+            }
+        );
+    </script>
+{% endblock display %}

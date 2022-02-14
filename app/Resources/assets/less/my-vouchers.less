@@ -1,0 +1,57 @@
+@import (reference) "master.less";
+
+#printable-vouchers {
+    li {
+        border: 1px solid #565656;
+        border-left: 10px solid #5EA95E;
+        padding: 10px 10px 10px 15px;
+        display: block;
+        float: none !important;
+        border-bottom: 1px dashed #a9a9a9;
+
+        @media (max-width: 403px) {
+            padding: 0 0 10px;
+        }
+
+        &.today {
+            border-left: 10px solid #ce4844;
+        }
+
+        &.soon {
+            border-left: 10px solid orange;
+        }
+
+        h3 {
+            font-size: 25px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 414px) {
+            h3 {
+                margin-top: 0;
+                font-size: 20px;
+            }
+
+            .printme {
+                p {
+                  font-size: 16px;
+                }
+            }
+        }
+
+        @media (max-width: 375px) {
+            .btn-instant-reward-download {
+                font-size: 18px;
+                width: 260px !important;
+            }
+        }
+    }
+}
+
+#myvouchersAndRewards {
+    .my-vouchers-rewards {
+        .havingtrouble {
+            display: none;
+        }
+    }
+}

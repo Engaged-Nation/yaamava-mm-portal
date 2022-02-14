@@ -1,0 +1,50 @@
+<div class="sub-menutab">
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="modal-button-style btn btn-default" data-chainable-click='["#lt_profile"]' data-gtm-dimension="v2/Help/Initial/My_Profile_Button_Success/My_Profile">My Profile</button>
+        <button type="button" class="modal-button-style btn btn-default" data-chainable-click='["#lt_prize_info", "#prizes-page button:contains(My Prizes)"]' data-gtm-dimension="v2/Help/Initial/My_Profile_Button_Success/My_Prizes">My Prizes</button>
+        <button type="button" class="modal-button-style btn btn-default active" data-chainable-click='["#lt_about"]' data-gtm-dimension="My_Profile/Tab/Site_Feedback">Help</button>
+    </div>
+</div>
+
+<div class="row" id="sitefeedbackpage">
+    <div class="col-md-12">
+        <div>
+            {% include 'FrontEnd/Resources/views/embed/fzone/contents/tabJs/sitefeedbackform.html.twig' %}
+        </div>
+    </div>
+</div>
+<script>
+    EngagedNation.RequireJS.require(
+        ["jquery_1_10"],
+        function($)
+        {
+            "use strict";
+
+            $(function () {
+                $('.embed #sitefeedbackform').on('submit', function (e) {
+                    var $target = $(this);
+                    e.preventDefault();
+
+                    $('#nsitefb').html('<div class="goCenter;"><img src="{{ s3furl|e('js') }}/images/client/images/hourglass.gif" /></div>');
+                    $('input[value="Submit"]').fadeOut();
+
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'jsonp',
+                        data: $target.serialize(),
+                        jsonp: 'callback',
+                        cache: false,
+                        url: '{{ fhost|e('js') }}/embed/index.php?embed={{ embed|e('js') }}&id={{ id|e('js') }}&submit=true&pageid={{ pageid|e('js') }}&include=sitefeedback',
+                        success: function (data) {
+                            $('#nsitefb').empty();
+                            $('input[value="Submit"]').fadeIn();
+                            $.lbxgrid({
+                                html: data.html
+                            });
+                        }
+                    });
+                });
+            });
+        }
+    );
+</script>

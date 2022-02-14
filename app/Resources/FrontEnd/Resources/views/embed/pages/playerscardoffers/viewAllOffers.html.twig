@@ -1,0 +1,18 @@
+<div style="max-width: 460px; text-align: center;">
+    {% for offer in offers %}
+        <div style="display: inline-block; padding: 10px; border: 1px solid #272727; margin: 3px;">
+            <div style="color: gold;">{{ offer.title }}</div>
+            <div style="font-size: 90%; color: #c5c5c5;">Valid Date(s)</div>
+            <ul class="enPortal-list-group" style="margin-bottom: 0; min-width: 170px;">
+                <li class="enPortal-list-group-item" style="background: transparent; border: none; padding: 0; color: #c5c5c5;">
+                    <span class="enPortal-badge" style="border-radius: 5px; background-color: #2046a6;">{{ offer.start_date }}</span>
+                    From
+                </li>
+                <li class="enPortal-list-group-item" style="background: transparent; border: none; padding: 0; color: #c5c5c5;">
+                    <span class="enPortal-badge" style="border-radius: 5px; background-color: #2046a6;">{{ offer.end_date }}</span>
+                    To
+                </li>
+            </ul>
+        </div>
+    {% endfor %}
+</div>

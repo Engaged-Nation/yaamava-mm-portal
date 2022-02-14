@@ -1,0 +1,43 @@
+<div id="theme-display-logout-box" class="hard" style="display: none;">
+    <div class="loginForm col-md-12">
+        <div id="account" class="logged-out-account">
+            <div class="header-logo">
+                <div>
+                    <img class="img-responsive" src="{{ global_en_config.environment.s3_uploads_url ~ '/images/logos/loggedout/' ~ global_en_config.getClientAlias() ~ '-logo.png' }}" />
+                </div>
+            </div>
+            <div class="header-p">
+                THANK YOU FOR PLAYING
+            </div>
+            <p>The Million Dollar March Mania Challenge is now over.  We hope you enjoyed the program and look forward to seeing you at {{cname}} soon.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    EngagedNation.RequireJS.require(
+        ["jquery_1_10"],
+        function($)
+        {
+            $(function () {
+                $('body').css('padding-bottom', 0);
+            });
+            function setThemeDisplayLogoutBoxHeight() {
+                $('#theme-display-logout-box').height($(window).height());
+                $('#theme-display-logout-box .background-center').height($(window).height());
+            }
+            $('body').addClass('theme-display-on-logout');
+            var windowResizeOnTimeout;
+            $(window).on('resize', function() {
+                clearTimeout(windowResizeOnTimeout);
+                windowResizeOnTimeout = setTimeout(setThemeDisplayLogoutBoxHeight, 250);
+            });
+            setThemeDisplayLogoutBoxHeight();
+            $(
+                function() {
+                    $('#theme-display-logout-box').fadeIn(700);
+                }
+            )
+        }
+    )
+</script>

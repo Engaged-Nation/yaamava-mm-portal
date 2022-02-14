@@ -1,0 +1,666 @@
+#
+# html+ means html tags are allowed (htmlentities is not used).
+# >- symbols allows a multiline format, line break will be converted to space and \n will be removed at the end of string.
+#
+# https://symfony.com/doc/current/components/yaml/yaml_format.html
+#
+
+#
+# fzone
+#
+fzone:
+  #
+  # tabs button title
+  #
+  tabs:
+    welcome: "MARCH MANIA"
+    nflfootballmain: "SCRAMBLE"
+
+  #
+  # profile box - name, points, icons
+  #
+  me:
+    logout:
+      title: "SIGN IN NOW FOR YOUR CHANCE AT $1 MILLION"
+      register: "Register"
+      facebook: "Facebook Login"
+      copyright: ""
+      placeholders:
+        username: "Email"
+        password: "Password"
+      titles:
+        username: "Email Address to Sign In"
+        forgotpassword: "Forgot Password"
+    icons:
+      leaderboard: "Leaderboard"
+
+  #
+  # login response
+  #
+  login:
+    incorrect: "<div class=\"wrongpass-wrapper\">
+            <div class=\"wrongpass-headline\">LOGIN UNSUCCESSFUL</div>
+            <div class=\"body-p-left\">The password you entered was incorrect. Please close this message and try again.</div>
+            <div class=\"body-p\">
+              <div class=\"wrongpassbold\">NEED TO RESET YOUR PASSWORD?</div>
+              If so, press the button below.
+            </div>
+            <div class=\"body-p btn-container\">
+              <button type=\"button\" class=\"modal-button-style btn-reset-password\" onclick=\"$('.lbxgrid .xclose span').click();\">RESET PASSWORD</button>
+            </div>
+          </div>"
+  instantRewards:
+    header: "SWISH!"
+    subheader: "You Won"
+    prize:
+      points: ""
+      drawingEntries: "<span class=\"drawing-entries\">%entries%</span> Drawing Entries!"
+      drawingEntry: "<span class=\"drawing-entries\">%entries%</span> Drawing Entry!"
+      experience: ""
+
+  #
+  # registration
+  #
+  register:
+    description: '<h2 class="h1-headline">Welcome to <br>%program%</h2>
+      <p class="body-p-lowercase">
+          Fill out the form below to register for an account and get access to fun, free games, exciting prizes and more!
+      </p>
+      <p class="body-p-lowercase">
+          <em>Must be %registrationAge% years of age or older to participate.</em>
+      </p>'
+
+    response: # response when completing registration
+      iprestriction: "
+        <p class=\"system-message-sub-header\">REGISTRATION INCOMPLETE</p>
+        <p class=\"system-message-body\">Unfortunately, we could not could not register you for an account.</p>
+        <p class=\"system-message-body\">Another individual already registered for an account from this IP address</p>
+        <p class=\"system-message-body\">
+          If you believe you received this message in error,
+          <a class=\"logout-modal-help-page showCursor decorationUnderline\" data-gtm-dimension=\"Logout Sitefeedback\">contact us</a> for further assistance.
+        </p>"
+
+      email2: "Your email already exists within our system. Please contact us if this is a mistake."
+
+      #
+      # is using emailtmpl.php
+      #
+      completed: "
+          <p class=\"system-message-sub-header\">VERIFY YOUR ACCOUNT</p>
+          <p class=\"system-message-body\">Fantastic prizes and fun, free games are just a click away!</p>
+          <p class=\"system-message-body\">To finish signing up, please open the verification email we just sent to you.</p>
+          <p class=\"system-message-body\">Click the button in the email to complete your registration. (If you do not see the email within a few minutes, please check your spam folder.)</p>
+          <p class=\"system-message-body\">Thank you for signing up! Have fun and good luck.</p>
+        "
+
+      success: "<h3>Congratulations!</h3><p>Your account has been activated.</p>" #html+
+
+  #
+  # password reset extended - sending instruction to email
+  #
+  passwordresetrq:
+    email: "Please enter the email address you used to register your account. We will send you a link to reset your password."
+    success: "Your Forgot Password request was successful. Please check your email." #html+
+    emailtosendheader: "Reset Your Password"
+
+
+
+  #
+  # forgot password
+  #
+  forgotpassword:
+    title: '<div class="system-message-sub-header">Forgot Password</div>'
+    p1: '<div class="system-message-body">Please enter the email address associated with your account and we will send you an email with a link so that you can reset your password.</div>
+      <div class="system-message-body">
+        If you don’t know what your email address is, please <a class="logout-modal-help-page showCursor decorationUnderline" data-gtm-dimension="Logout Sitefeedback">contact us</a> for further assistance.
+      </div>'
+    p2: '<div class="system-message-body">Your email already exists within our system. Please enter your email address. We will send you a link to reset your password.</div>'
+
+  #
+  # sitefeedback
+  #
+  sitefeedback:
+    form:
+      title: '<div class="system-message-sub-header">%program% help</div>'
+      description: '<p class="system-message-body">Please fill out the form below to get assistance with the <em>%program%</em> program.</p>
+        <p class="system-message-body">For questions unrelated to the <em>%program%</em> program, please contact %cname% directly via our primary website.</p>'
+    response:
+      success: '<p class="system-message-sub-header">WE’RE ON IT!</p>
+        <p class="system-message-body">Thank you for contacting us.</p>
+        <p class="system-message-body">Your comments were successfully submitted to our %programName% team.</p>
+        <p class="system-message-body">We’ll be in touch with more information as soon as possible.</p>'
+    header: "
+      <p>
+        With our exclusive %program% program, you can enjoy a wide variety of fun games and activities, earn special rewards and participate in %program%-only online events. Play every day to earn %points%, then exchange them for the rewards of your choice to make your next visit to Star Casino & Resort even more exciting.
+      </p>
+      <p>
+        Get your players excited about all the perks they'll enjoy when they play on your customized portal.  Add messages to explain about how rewards integrate with your players club, give them hints about upcoming portal promotions you might be running or just welcome them to the experience.
+      </p>
+      "
+    navTabs: '
+      <ul id="help-tab" class="nav nav-tabs enPortal-row no-gutter">
+          <li role="presentation" class="active enPortal-col-xs-12 enPortal-col-md-3"><a href="#help" aria-controls="help" role="tab" data-toggle="tab" data-gtm-dimension="Help/About">About %program%</a></li>
+          <li role="presentation" class="enPortal-col-xs-12 enPortal-col-md-3"><a href="#faqs" aria-controls="faqs" role="tab" data-toggle="tab" data-gtm-dimension="Help/FAQS">Program Results</a></li>
+          <li role="presentation" class="enPortal-col-xs-12 enPortal-col-md-2"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab" data-gtm-dimension="Help/Official Rules">Rules</a></li>
+          <li role="presentation" class="enPortal-col-xs-12 enPortal-col-md-4"><a href="#terms" aria-controls="terms" role="tab" data-toggle="tab" data-gtm-dimension="Help/TermsAndConditions">Terms &amp; Conditions</a></li>
+      </ul>
+      '
+    instructionvideobtn: "SilverPASS INSTRUCTIONAL VIDEO"
+    faqs:
+      p1: "Dramatically increase foot traffic, revenue, loyalty and more with the most comprehensive gamified marketing product suite in the marketplace.  Use our products individually to help you achieve your promotional and financial goals, or use them together to create the ultimate ongoing engagement experience."
+      h1: ""
+      h2: "PROFOOTBALL"
+      p2: "Reap rewards like these with our premium ongoing engagement platform, as illustrated below by real-world results directly associated with the program over a 12-month period."
+      h3: ""
+      p3:
+        a: '
+          <ul>
+              <li>Total Theo&colon; $16,972,906</li>
+              <li>Incremental Theo&colon; $1,244,197</li>
+              <li>Total Visits&colon; 64,209</li>
+              <li>Incremental Visits&colon; 11,994</li>
+              <li>Website Engagement&colon; Increased by more than 500%</li>
+          </ul>
+          '
+        b: '<a target="_blank" href="%s3furl%/images/pdf/EngagedNation_FullReach_CaseStudy.pdf">Read the Case History</a>'
+      h4: "CAMPAIGNREACH"
+      p4: "Make your next event the most successful ever, as we did for one of our clients with this highly-targeted 4 to 6 week program."
+      h5: ""
+      p5:
+        a: '
+          <ul>
+             <li>Net Theo Win&colon; $2.5 Million</li>
+             <li>Visitation Increase&colon; 2.4 to 6.4 Per Player</li>
+             <li>Total Visits&colon; More than 18,000</li>
+             <li>Grand Finale Revenue Lift&colon; $200,000</li>
+           </ul>
+           '
+        b: '<a target="_blank" href="%s3furl%/images/pdf/EngagedNation_CampaignReach_CaseStudy.pdf">Read the Case History</a>'
+        c: ""
+      h6: "OUTREACH"
+      p6: "Give your email marketing and digital advertising a dramatic engagement boost with this interactive communications tool and see what it can do for your bottom line."
+      h7: ""
+      p7:
+        a: '
+          <ul>
+              <li>Email Open Rates&colon; 60%</li>
+              <li>Email Click-Through Rates&colon; Over 45%</li>
+              <li>Advertising Click-Through Rate Increase&colon; 2,845%</li>
+              <li>Incremental Visits Increase&colon; Over 3,000 in a two-week period</li>
+              <li>Revenue Lift&colon; $232,700</li>
+          </ul>
+          '
+        b: '<a target="_blank" href="%s3furl%/images/pdf/EngagedNation_OutReach_CaseHistory.pdf">Read the Case History</a>'
+      h8: ""
+      p8: ""
+      h9: ""
+      p9: ""
+      h10: ""
+      p10: ""
+      h11: ""
+      p11: ""
+      h12: ""
+      p12: ""
+      h13: ""
+      p13: ""
+      h14: ""
+      p14: ""
+      h15: ""
+      p15: ""
+
+
+    rules:
+      description: >- #html+
+        <p>
+          Members of the %program% program are entitled to one registered account per person.
+          No duplicate accounts are permitted. Violation of this policy may result in the elimination of the members
+          account(s) and any further participation in the program. Management reserves the right to remove members from
+          the system and void any offers at their discretion.
+        </p>
+        <ul>
+          <li>%program% membership enrollment is free to all guests 21 years of age or older.</li>
+          <li>Members are allowed one registered account per person. No duplicate accounts are permitted.</li>
+          <li>A valid ID must be presented at %cname% when redeeming a prize or reward.</li>
+          <li>Rewards/prizes require joining the %cnamecasino% Players Club <i>(membership is free)</i>.</li>
+          <li>Redeemable rewards and prize vouchers are non-transferrable and will not be replaced if lost or stolen.</li>
+          <li>Rewards and prize vouchers are not valid after the expiration date printed on the voucher.</li>
+          <li>%points% have no cash value.</li><li>%points% cannot be combined with any other %program% accounts.</li>
+          <li>Employees and immediate family of %cname% are not eligible to participate.</li>
+          <li>
+            Individuals, who are self-excluded from casino facilities, either through Mississippi Gaming government program
+            or by their own request, are not eligible to win and may not participate in this program.
+          </li>
+          <li>Violation of any of these rules may result in the termination of account.</li>
+          <li>Members are responsible for updating their contact info to %program%</li>
+          <li>%points% discounts cannot be combined with any other offer or discount.</li>
+          <li>%program% and %cname% Reef Rewards are two separate and individual programs.</li>
+          <li>Management reserves the right to remove members from the program without notice.</li>
+          <li>Management reserves the right to modify this program and/or any active promotions at any time without notice.</li>
+          <li>Management may disqualify any person for any prize based on fraud, dishonesty or violation of Official Rules or other misconduct.</li>
+          <li>
+            Any attempt by any person to deliberately damage any program or to undermine the legitimate operation of this
+            promotion may be a violation of a criminal and civil laws and should an attempt be made, %cname% reserves the right
+            to seek damages from any such person to the fullest extent of the law.
+          </li>
+          <li>All %program% promotions are subject to all applicable federal, state and local state laws and regulations.</li>
+          </ul>
+            <p>
+              %cname% is not responsible for (a) electronic transmission error or delays resulting in an inability to
+              participate or other loss, (b) theft or destruction of or unauthorized access to or alterations of
+              %program% data, or for technical, hardware, software, or telephone failures of any kind,
+              (c) lost or unavailable connections, fraud, incomplete, garbled, or delayed computer transmissions, whether
+              caused by %cname%, users, or by any of the equipment or programming associated with or utilized in the
+              Promotion or by any technical or human error which may occur in the processing of submissions which may
+              limit, restrict, or prevent a player's ability to participate in %program% Promotion(s).
+            </p>
+
+  #
+  # my vouchers tab
+  #
+  myvouchers:
+    header: ""
+    bodycopy: "View your active prizes and redeem them by displaying this page on a mobile device to a Players Club
+      representative before the expiration date.  You can also download and display the voucher PDF to a Players Club
+      representative on your mobile device, or you can print it out and bring it with you."
+    details: "<p><span class=\"goGold\">Player Name</span>: %issuedTo%</p>
+      <p><span class=\"goGold\">Players Card Number</span>: %playerscard%</p>
+      <p><span class=\"goGold\">Email Address</span>: %email%</p>
+      <p><span class=\"goGold\">Date Issued</span>: %issued_date%</p>
+      <p><span class=\"goGold\">Expiration Date</span>: %expire_date%</p>
+      <p><span class=\"goGold\">Voucher Id</span>: %vid%</p>
+      <p><span class=\"goGold\">Description</span>: %description%</p>
+      <p><span class=\"goGold\">Legal</span>: %legal%</p>"
+
+    footer: ""
+    novouchers: "<div class=\"no-vouchers-text\">You do not have any prizes to redeem at this time.</div>"
+
+  #
+  # invite a friend
+  #
+  invites:
+    title: "Invite Your Friends, Earn %pointsperinvite% %points%"
+    p1: '
+      <p>
+        Looking for Leads? This social marketing tool has a two-fold advantage. You can engage prospective customers in a meaningful way prior to their first experience at your location, and build a new customer acquisition database all in one shot.
+      </p>'
+    p2: "<p>(Use a comma to separate each address)</p>" #html+
+
+  #
+  # fill in the blank
+  #
+  fitb:
+    p1: '
+      <div style="margin-bottom:10px;">
+        One of our effective edutainment stars, this activity is an engagement must. Customers need to find, read and remember specific details in your promotions, events, products and services pages in order to complete this brainteaser. It''s always one of the most played, effective activities in the program!
+      </div>'
+    learntoplayinfo: "Simply search, find and fill in the blank below with the answer. Participate each day to earn %points%."
+
+  #
+  # quiz
+  #
+  quiz:
+    p1: "Help customers develop a deeper understanding of your property and learn fun facts about gaming, your local area and much more. This daily challenge drives players around your site and increases their retention of your messaging, helping your customers become brand experts. Answers can be obtained online, or provided at the property to really drive your foot traffic.<br><br>" #html+
+
+  #
+  # trivia
+  #
+  trivia:
+    p1: ""
+
+  #
+  # memory match
+  #
+  memorymatch:
+    p1: "Entertain and educate customers visually as they attempt to find and match images of your dining outlets, events, promotions and more. Always one of our most popular games, it's a great way to build brand awareness!"
+
+  #
+  # match3
+  #
+  match3:
+    p1: "Award players for their engagement time with an instant reward. A fan favorite, this fun activity can be programmed to provide instant wins, virtual currency or drawing entries."
+
+  #
+  # scratch card
+  #
+  scratchcard:
+    p1: "<p style=\"max-width: 500px; text-align: center; margin: 0px 0px 0px 30px;\">This popular game needs no introduction. A player favorite, this instant win game allows players to get a quick \"hit\" of virtual credits, an instant reward or drawing entries!<br /><br />Click and scratch your card to reveal your reward.</p>" #html+
+
+  #
+  # three card monte
+  #
+  threecardmonte:
+    p1: "<p style=\"text-align:center;\">Challenge players to find the right card and boost engagement.<br> This will keep customers coming back every day to beat their best scores!</p>" #html+
+
+  #
+  # wordsearch
+  #
+  wordsearch:
+    p1: ""
+
+  #
+  # pick4
+  #
+  pick4:
+    marketing1: '
+      <p>
+        A quick, fun way to provide instant rewards, virtual currency or drawing entries. Customized graphics will complement your current promotions or events to build more awareness.
+      </p>'
+
+  #
+  # spin n win
+  #
+  wheelgame:
+    marketing1: ''
+    winnerTxt: 'Congratulations! You have earned %awarded% %points%.'
+
+  #
+  # my voucher awarded and btn
+  #
+  awardedVoucher:
+    thankYouVoucherPick4: "Thank You For Playing!<br /> You were awarded <span id=\"scratchcard-voucherTitle\">%voucherTitle%</span>."
+
+
+
+  #
+  # earn tab
+  #
+  earn:
+    header: "<p>Let the fun begin! Select one of our feature game icons below to play and earn %currency% or challenge yourself with U Pick 'Em, classic casino & arcade games.</p>"
+
+  arcade:
+    p1: "These extremely popular classic arcade games keep players coming back day after day. Programmed to award %points% for a limited number of daily plays, they can be configured for special community challenges and more to significantly increase your engagement results.<br><br>" #html+
+    learnMore: "You will automatically earn %amount% %points% for each of the first %max% games played every day. You can also compete for placement on the TOP 20 winners Leaderboard to earn achievements. Good luck!"
+
+  #
+  # redeem
+  #
+  redeem:
+    lightbox:
+      button: "Reward Me!"
+    marketing1: '
+      <div style="padding:10px; margin-bottom:10px;">
+        Rewards are an essential component of effective digital engagement; they increase monthly property visits by up to 100% and incremental revenue by 40% or more – giving you an ROI of between 10 – 40X at minimum. Your choice of reward type and frequency can create astonishing conversion results. Our gamified solutions create an "online-to-on-property" conversion cycle that, when fueled by incentivization, creates a perception of value and motivates players to visit your property more often. Redemption methods, reward segmentation and delivery strategies are all carefully tailored to your needs to drive player visitation when you want it most.
+      </div>'
+
+  #
+  # double or nothing
+  #
+  dblng:
+    p1: "<p style='font-size:20px;'><span style='font-size:30px; font-weight:bold;'>Double your %points%!</span><br /><br /> Decide if the next card will be<br> higher or lower than the card shown.</p>"
+    p2: "<p style='font-size:30px;'>What Do You Think?</p>
+      <p style='font-size:20px;'>Will the next card be <strong>higher</strong> or <strong>lower</strong> than the card showing? Guess correctly
+      and you could <strong>double</strong> your %pointsawarded% %points%. GOOD LUCK!</p>"
+    no_button: "No Thanks"
+    high_button: "Higher"
+    low_button: "Lower"
+
+  #
+  # bonus code
+  #
+  bonuscode:
+    p1: "<p style='font-size:20px;'>Have you been given a Special Bonus Code?<br />If you are one of the lucky winners
+      who received a code, enter it in the text box below to receive a special surprise!</p>"
+
+
+    respone:
+      pointsawarded: "<h3 class=\"goGold\">Congratulations!</h3>You have been awarded %amount% %points%." #html+
+
+  #
+  # survey
+  #
+  survey:
+    p1: "Gain deeper insights into your customers. Build player loyalty by giving them the opportunity to communicate their level of customer service satisfaction, promotional gift preferences, or anything you want to know more about. "
+    thankyou: "Thank you for taking our survey! You were awarded %amount% %currency%."
+
+  #
+  # quick pick
+  #
+  quickpick:
+    thankyoumessage: "Thank you for playing!<br /> You were awarded %awarded% %points% %msg_dblng%"
+
+
+  #
+  # crossword
+  #
+  crossword:
+    p1: "Challenge your customers to remember your key marketing messages as they search for the words to complete this classic puzzle.   This edutaining game quickly converts them into knowledgeable brand ambassadors and keeps your customers connected with more than 15 minutes per website session." #html+
+    learntoplayinfo: "<p>Click each number on the crossword grid to read the questions and enter your answer without spaces or special characters.</p><p>Each puzzle can only be played once per week so click \"Submit\" only when you have completed as many questions as you can.</p><p>Win 15 %points% for each correct answer.</p>" #html+
+
+  #
+  # casino trivia
+  #
+  casinotrivia:
+    p1: "<p style='font-size:20px;'>Study the image for %time% seconds, memorize the details and answer the question correctly to earn drawing entries!</p>"
+    p2: ""
+    hint: "Hint:&nbsp; %hint%"
+    response:
+      wronganswer: "<p style='font-size:20px;'><span style='font-size:30px; font-weight:bold;'>Thank You For Playing!</span><br><br>
+        Unfortunately, the correct answer was <span class=\"goGold\" style=\"font-weight:bold;\">%correctSingleAnswer%</span>.
+        <br><br>
+        Play again next week for a chance to earn even more entries into our <strong>Million Dollar March Mania Challenge!</strong>"
+    readyBtn: "I'm Ready!"
+
+  #
+  # Video Text
+  #
+  video:
+    headerTxt: "Learn how to earn rewards"
+
+  #
+  # facebook
+  #
+  facebook:
+    loginMessage: "One moment while we gather your information."
+    success:
+      newLoggedIn: "<span class=\"system-message-header2\">Your account was successfully associated with Facebook.</span>
+            <span class=\"system-message-body\">
+              Return to the \"Home\" page and click on \"Facebook Share\" to post your message and win a reward!
+            </span>"
+
+
+  #
+  # facebook share
+  #
+  share:
+    p1: "Ready For a WIN/WIN?"
+    p2: "Share the fun with your friends and earn %currency%."
+    p3: "They enjoy all the benefits of the program, and you add a boost to your Drawing Entry totals."
+    noactive: "<em>Facebook Share</em> is coming soon!"
+
+  #
+  # bonus keys
+  #
+  keys:
+    title: "Find the Key!"
+    p1: "<p>webKEYS are the first step to unlocking the potential of your website. It's a fun, easy, interactive way to increase awareness of any area of your property. It directs traffic to a specific page, increasing its exposure by up to 400% (daily average views).</p>" #html+
+
+  #
+  # casino games
+  #
+  casinogames:
+    p1: "Promote your online social casino or help new players get more comfortable with a variety of typical casino games. These games are a great way to familiarize new players with the kinds of games your offer, and entertain the experts!"
+    learnMore: "Play now to compete for your spot on the leaderboard. Good luck!"
+    flashNotSupported: "<p style=\"color: #fff;\">Games on our website require the Adobe Flash Plugin to play.
+      If you are experiencing problems playing, please obtain the newest flash plugin by clicking the link below.</p>
+      <p style=\"color: #fff;\"><a href=\"https://get.adobe.com/flashplayer/\" target=\"_new\" style=\"color: red;\">https://get.adobe.com/flashplayer/</a></p>"
+
+
+  #
+  # iframe flash message
+  #
+  iframe:
+    noflash: "<p style=\"color: #fff;\">We’re sorry, but this game is not supported on mobile devices.
+      You can enjoy this and other %program% activities on your tablet or computer.</p>"
+
+  #
+  # arcadegames
+  #
+  arcadegames:
+    flashNotSupported: "<p style=\"color: #fff;\">Games on our website require the Adobe Flash Plugin to play.
+      If you are experiencing problems playing, please obtain the newest flash plugin by clicking the link below.</p>
+      <p style=\"color: #fff;\"><a href=\"https://get.adobe.com/flashplayer/\" target=\"_new\" style=\"color: red;\">https://get.adobe.com/flashplayer/</a></p>"
+
+  #
+  # leaderboard
+  #
+  leaderboard:
+    notloggedin: "<p>Login and play now to compete for your spot on the leaderboard. Good luck!</p>" #html+
+
+  #
+  # Entries Lightbox
+  #
+  entries:
+    h3: "Weekly Drawing"
+
+
+  #
+  # authentication
+  #
+  auth:
+    inboxsubject: "Welcome to %program%!"
+    inboxbody: "Dear %name%,<br /><br />Welcome to %program%, our fun, 100% free online rewards program. Login daily to win FREEPLAY, Match Play, dining offers, discounts and more!<br /><br/>%program% is easy as 1, 2, 3...<br /><br />1) Play fun games and exciting activities.<br /><br />2) Earn %currency% (our virtual currency) for your play.<br /><br />3) Redeem your %currency% for FREE prizes in our rewards section.<br /><br />Start by winning %currency% the moment you log in with Spin N Win. In the home or daily play areas, you can also enjoy a wide variety of activities like three card monte, memory match, quick pick, quizzes and more.<br /><br />Double your %currency% after select activities with Feeling Lucky and test your skills by competing for a top spot on the leaderboard with classic arcade and casino games. You can even predict the future with U Pick Em' to earn even more %currency%!<br /><br />Visit the rewards center to redeem %currency% for the real reward of your choice! Then when you are ready to enjoy it, take your reward voucher to the player's club at %cname% for validation.<br /><br /> It's just that easy to be a winner with %program%. The more you play, the more you can win!<br /><br />%program% Support" #html+
+
+  #
+  # drawings
+  #
+  drawings:
+    activetitle: "Weekly Drawing"
+
+  #
+  # terms and condition
+  #
+  termsAndCondtions:
+    input1: '<p class="system-message-body">I agree to the
+        <a class="terms-and-conditions-link" href="https://s3-us-west-2.amazonaws.com/marchmania-uploads/images/pdf/rules-terms.pdf" target="_blank">
+          terms and conditions.
+        </a>
+      </p>'
+
+  #
+  # promo pick 4
+  #
+  pick4Promo:
+    title: "Pick, Click and Win!"
+    description: "Choose wisely and enjoy your reward."
+
+#
+# Email template to confirm registration
+#
+emailConfirmation:
+  body:
+    header: "<span style=\"color:#004689\">Get your free %points_per_register% reward points in just one click</span>" #html+
+    txt1: "Thanks for joining Silver Reef SilverPASS,"
+    txt2: "Get your <span style=\"color:#004689\">free %points_per_register% eFuns</span> just for confirming your email" #html+
+
+  footer:
+    companywebsite: "www.silverreefcasino.com"
+    companyadress: "9107 W. Russell Road | Las Vegas, NV 89148"
+    customerservice: "https://www.silverreefcasino.com/contactus/"
+
+  links:
+    unsubscribe: "https://www.silverreefcasino.com/silverpass"
+    emailpreferences: "https://www.silverreefcasino.com/silverpass"
+    privacypolicy: "https://www.silverreefcasino.com/wp-content/uploads/2016/08/SRCPrivacyPolicy_201608021"
+    socialmedia:
+      facebook: "https://www.facebook.com/SilverReefCasino/"
+      hoteladvisor: "http://tripadvisor.com/Hotel_Review-g58472-d619056-Reviews-Silver_Reef_Hotel_Casino_and_Spa-Ferndale_Washington.html"
+      instragram: "https://www.instagram.com/silverreefcasino/"
+      twitter: "https://twitter.com/TheSilverReef/"
+      yelp: "http://www.yelp.com/biz/silver-reef-hotel-casino-and-spa-ferndale/"
+
+#
+# Email template for invite a friend
+#
+emailInvite:
+  body:
+    h1: >-
+      <h1 style="color: #004689;">
+        Get your FREE %alias_points% now!<br> <span>It's</span> as easy as 1, 2, 3...
+      </h1>
+
+  footer:
+    companywebsite: "www.silverreefcasino.com"
+    companyadress: "I-5 Exit 260 4 Min. West | Haxton Way at Slater Road | Ferndale, WA"
+    customerservice: "https://www.silverreefcasino.com/contactus/"
+
+  links:
+    unsubscribe: "https://www.silverreefcasino.com/silverpass"
+    emailpreferences: "https://www.silverreefcasino.com/silverpass"
+    privacypolicy: "https://www.silverreefcasino.com/wp-content/uploads/2016/08/SRCPrivacyPolicy_201608021"
+    socialmedia:
+      facebook: "https://www.facebook.com/SilverReefCasino/"
+      hoteladvisor: "http://tripadvisor.com/Hotel_Review-g58472-d619056-Reviews-Silver_Reef_Hotel_Casino_and_Spa-Ferndale_Washington.html"
+      instragram: "https://www.instagram.com/silverreefcasino/"
+      twitter: "https://twitter.com/TheSilverReef/"
+      yelp: "http://www.yelp.com/biz/silver-reef-hotel-casino-and-spa-ferndale/"
+
+
+#
+# Email template for voucher
+
+email:
+  response:
+    subject: "Your Reward is Ready to Redeem"
+
+
+gameCompleted:
+  header: "Thank you for playing!"
+  subheader: "You won"
+  prize:
+    points: ""
+    drawingEntries: "<span class=\"drawing-entries\">%entries%</span> Drawing Entries"
+    drawingEntry: "<span class=\"drawing-entries\">%entries%</span> Drawing Entry"
+    drawingNotes: "Into The<br><strong>Grand Prize Drawing</strong>"
+    experience: ""
+
+playerscard:
+  note: 'While you can sign up for a %programName% account without entering a %playersCardName% card number,
+    <span class="underline">you will not be able to redeem any rewards or instant prizes</span> without adding a valid
+    number to your account. Please sign up for a %playersCardName% card at a %property% Rewards center and enter the number
+    on your MY PROFILE page at your earliest convenience.'
+
+api:
+  instant:
+    reward:
+      notification:
+        message: "<strong>YOUR REWARD IS EXPIRING</strong><br />
+          You have <span>%amount% reward%plural%</span> about <span>expire</span>.<br/>
+          <span class=\"underLine\">Click here</span> to access your rewards."
+
+tournament:
+  leaderboard:
+    header_title_overall: ""
+    header_title_cumulative: ""
+    noData: "</span>"
+    rank1_text: "1<sup>st</sup>"
+    rank2_text: "2<sup>nd</sup>"
+    rank3_text: "3<sup>rd</sup>"
+    icon:
+      extension: "png"
+    modal:
+      title_overall: ""
+      title_cumulative: ""
+      simple_modal_body1: "<p class=\"body-p-left\">
+          This leaderboard shows your <strong>%modalText% score</strong> and ranking. If you filled out multiple brackets, only your highest-scoring bracket
+          will be displayed on the leaderboard.
+        </p>
+        <p class=\"body-p-left\">
+          Leaderboards will be updated March 23, March 30 and April 7, 2020.
+        </p>
+        <div class=\"h4-subheadline-prediction-info\">
+          WHY ISN'T MY NAME DISPLAYED ON THE LEADERBOARD?
+        </div>
+        <p class=\"body-p-left\">
+          Only the top 11 players will be displayed on the leaderboard.
+          If you do not see your name displayed there, check underneath the leaderboard to view your score and ranking.
+        </p>
+        <div class=\"h4-subheadline-prediction-info\">
+          WHY IS MY MY NAME BEING DISPLAYED ON THE LEADERBOARD AS SERIES OF RANDOM NUMBERS AND LETTERS?
+        </div>
+        <p class=\"body-p-left\">
+          In order to protect our players' privacy, we display \"nicknames\" on our leaderboards. Your account is populated with a randomly-generated nickname when it is created.
+          To change your nickname, click <a data-lt-link=\"profile\" data-gtm-dimension=\"Leaderboard/My_Profile\" data-modalautoclose=\"true\">here</a> and edit
+          the nickname field with the name you would like to use.
+        </p>"
+      simple_modal_body2: ""
+      simple_modal_body3: ""

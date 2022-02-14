@@ -1,0 +1,232 @@
+<div id="instant-reward-form" style="text-align: center;">
+    <h1 class="goCenter modal-header-style">{{ 'fzone.instantRewards.header'|trans({}, 'frontend')|raw }}</h1>
+
+    <h2 class="goCenter modal-body-style" style="margin-bottom: 10px;">{{ 'fzone.instantRewards.subheader'|trans({}, 'frontend')|raw }}</h2>
+
+    {% if points %}
+        <p class="modal-body-style">{{ 'fzone.instantRewards.prize.points'|trans({'%points%': points|number_format, '%aliasPoints%': aliasPoints}, 'frontend')|raw }}</p>
+    {% endif %}
+
+    {% if drawingEntries %}
+        <p class="modal-body-style">
+            {{
+            (
+            drawingEntries == 1 ?
+            'gameCompleted.prize.drawingEntry' :
+            'gameCompleted.prize.drawingEntries'
+            )|trans({'%entries%': drawingEntries|number_format}, 'frontend')|raw
+            }}
+        </p>
+        <span class="drawingNotes">{{ 'gameCompleted.prize.drawingNotes'|trans({}, 'frontend')|raw }}</span>
+    {% endif %}
+
+
+    {% if experience %}
+        <p class="modal-body-style">{{ 'fzone.instantRewards.prize.experience'|trans({'%experience%': experience|number_format, '%aliasExperience%': aliasExperience}, 'frontend')|raw }}</p>
+
+        <script>
+            EngagedNation.RequireJS.require(
+                ["jquery_1_10"],
+                function($)
+                {
+                    $(document).trigger(
+                        $.Event(
+                            'EngagedNation:Experience-Earned',
+                            {
+                                engagedNation: {
+                                    exp: {{ experience|e('js') }}
+                                }
+                            }
+                        )
+                    );
+                }
+            );
+        </script>
+    {% endif %}
+
+    {% if voucher %}
+        {% if points or drawingEntries or experience %}
+            {{ 'fzone.instantRewards.prize.plus'|trans({}, 'frontend')|raw }}
+        {% endif %}
+        <div id="instantRewardsUserInputForm" style="text-align: center;">
+            {{
+            renderTemplateString(
+                voucher.summary,
+                {
+                    "printButton":printButton,
+                    "smsButton":smsButton,
+                    "emailButton":emailButton,
+                    "kioskButton":kioskButton,
+                    "voucher":voucher,
+                    "userVoucher":userVoucher,
+                    "s3Url":s3Url
+                }
+            )
+            }}
+        </div>
+
+        <script>
+            EngagedNation.RequireJS.require(
+                [
+                    'jquery_1_10',
+                    'apiClientFrontendUserEmail'
+                ],
+                function($, ApiClientFrontendUserEmail)
+                {
+                    $('.lbxgrid-content').addClass('reward-animation');
+                    $('.lbxgrid-content').addClass('animation-v1');
+
+                    /**
+                     * Email voucher to User if qualified.
+                     */
+                    (new ApiClientFrontendUserEmail).post(
+                        {
+                            userId: EngagedNation.Config.userId,
+                            usersVouchersId: '{{ publicUserVoucherId|e('js') }}'
+                        },
+                        function(response) {
+                            if (!response.data) {
+                                $(document).trigger('EngagedNation:Voucher-Awarded');
+                                return;
+                            }
+
+                            if (response.status === 'Success') {
+                                EngagedNation.Notification.displaySuccess(
+                                    {
+                                        title: response.data.title,
+                                        message: response.data.message,
+                                        position: 'topRight',
+                                        timeout: 0
+                                    }
+                                );
+                                return;
+                            }
+
+                            EngagedNation.Notification.displayError(
+                                {
+                                    title: response.data.title,
+                                    message: response.data.message,
+                                    position: 'topRight',
+                                    timeout: 0
+                                }
+                            );
+                        },
+                        null
+                    );
+                }
+            );
+        </script>
+        <style>
+            /* Please leave me here. This style can't stay in base.less */
+            .lbxgrid-wrapper {
+                background: url(https://s3-us-west-2.amazonaws.com/marchmania-uploads/images/games/instant_reward/flashing-lights-particles-v2.gif) no-repeat center;
+                max-width: 500px !important;
+                padding: 50px !important;
+            }
+        </style>
+    {% else %}
+        <script>
+            EngagedNation.RequireJS.require(
+                ["jquery_1_10"],
+                function($)
+                {
+                    $('.lbxgrid-content').addClass('reward-animation');
+                    $('.lbxgrid-content').addClass('animation-v1');
+
+                    setTimeout(
+                        function() {
+                            if ($('#instant-reward-form').length > 0) {
+                                $('.lbxgrid .xclose span').click();
+                            }
+                        },
+                        3500
+                    );
+                }
+            );
+        </script>
+
+        <style>
+            /* Please leave me here. This style can't stay in base.less */
+            .lbxgrid-wrapper {
+                background: url(https://s3-us-west-2.amazonaws.com/marchmania-uploads/images/games/instant_reward/ConfettiBalls40f32c.gif) no-repeat center;
+                max-width: 500px !important;
+                padding: 50px !important;
+            }
+        </style>
+    {% endif %}
+</div>
+
+<script>
+    var EngagedNation = EngagedNation || {};
+    EngagedNation.Callback = EngagedNation.Callback || {};
+
+    EngagedNation.RequireJS.require(
+        [
+            'jquery_1_10'
+        ],
+        function($)
+        {
+            $(
+                function() {
+                    EngagedNation.Callback.InstantRewardUserForm = function(event, target) {
+                        event.preventDefault();
+
+                        var self = $(target),
+                            data = {};
+
+                        {% if isManualInputEnabled %}
+                        if (self.find('input[name="email"]').length > 0) {
+                            data = {
+                                action: self.find('input[name="action"]').val(),
+                                pendingMessage: self.find('input[name="pendingMessage"]').val(),
+                                userFormInputs: self.serialize()
+                            }
+                        }
+
+                        if (self.find('input[name="phoneNumber"]').length > 0) {
+                            data = {
+                                action: self.find('input[name="action"]').val(),
+                                pendingMessage: self.find('input[name="pendingMessage"]').val(),
+                                userFormInputs: self.serialize()
+                            }
+                        }
+
+                        data = {
+                            action: self.find('input[name="action"]').val(),
+                            pendingMessage: self.find('input[name="pendingMessage"]').val(),
+                            userFormInputs: self.serialize()
+                        };
+                        {% else %}
+                        data = {
+                            action: self.find('input[name="action"]').val(),
+                            pendingMessage: self.find('input[name="pendingMessage"]').val(),
+                            publicUserVoucherId: self.find('input[name="publicUserVoucherId"]').val(),
+                            userFormInputs: self.serialize()
+                        };
+                        {% endif %}
+
+                        data['componentName'] = '{{ componentName|e('js') }}';
+                        data['publicUserVoucherId'] = '{{ publicUserVoucherId|e('js') }}';
+
+                        EngagedNation.InstantReward.sendReward(data);
+                    };
+
+                    if (!EngagedNation.Callback.hasOwnProperty('InstantRewardUserPrint')) {
+                        EngagedNation.Callback.InstantRewardUserPrint = function() {
+
+                            EngagedNation.InstantReward.printReward($(this));
+                        }
+                    }
+
+                    var onUserPrint = '#instantRewardsUserInputForm .btn-print-reward';
+                    $(document).off('click', onUserPrint, EngagedNation.Callback.InstantRewardUserPrint);
+                    $(document).on('click', onUserPrint, EngagedNation.Callback.InstantRewardUserPrint);
+
+                    var viewMyVouchersBtn = '#instant-reward-my-vouchers-btn';
+                    $(document).one('click', viewMyVouchersBtn, EngagedNation.Utility.showUserVoucher);
+                }
+            );
+        }
+    );
+</script>
+

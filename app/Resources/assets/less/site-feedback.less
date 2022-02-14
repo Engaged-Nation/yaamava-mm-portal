@@ -1,0 +1,85 @@
+@import (reference) "master.less";
+
+#sitefeedbackpage {
+    padding:8px;
+    margin: 0 auto;
+
+    .h1-headline-smaller {
+        color: #e0c389;
+        line-height: 125%;
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 30px;
+    }
+
+    .body-p {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .body-p-left {
+        line-height: 125%;
+        max-width: 360px;
+    }
+
+    .faq-terms-rules-link {
+        margin: 10px auto;
+
+        .h3-subheadline {
+            font-size: 16px;
+            color: #e0c389;
+            text-decoration: underline;
+        }
+    }
+
+    #sitefeedbackform {
+        input {
+            max-width: 360px;
+
+            &.button {
+                padding: 5px 15px;
+            }
+        }
+
+        textarea {
+            max-width: 360px;
+        }
+
+        p {
+            .body-p;
+        }
+
+        .captcha- {
+            margin: 10px auto;
+            text-align:center;
+        }
+
+        .captcha-text {
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .recap-container {
+            max-width: 360px;
+        }
+
+        .g-recaptcha-wrapper {
+            display: table;
+            margin: 0 auto;
+        }
+
+        .buttonWrapper {
+            text-align: center;
+        }
+    }
+
+    #template-sitefeedback-form {
+        #recaptcha-errors-container {
+            margin: 0 !important;
+
+            .parsley-errors-list {
+                padding: 0 !important;
+            }
+        }
+    }
+}

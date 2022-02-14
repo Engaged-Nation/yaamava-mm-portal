@@ -1,0 +1,518 @@
+@import (reference) "master.less";
+
+.rowBelowHeaderTheme {
+    position: relative;
+    z-index: 2;
+
+    > div {
+        height: 100%;
+    }
+
+    #theme-display-logout-box {
+        &.pre-launch {
+            .logged-out-account {
+                text-align: center;
+
+                .header-p {
+                    .fontRobotoCondensedBold;
+                    color: #f9a933;
+                    font-size: 50px;
+                    margin: 0 auto 20px auto;
+
+                    &:nth-last-of-type(2) {
+                        margin: 20px auto 0 auto;
+                    }
+
+                    @media screen and (max-width: 991px) {
+                        font-size: 32px;
+                    }
+
+                    @media screen and (max-width: 414px) {
+                        font-size: 28px;
+                        margin: 10px 0;
+                        line-height: 110%;
+                    }
+                }
+
+                .highlight {
+                    color: #98eafc;
+                }
+
+                .header-logo {
+                    text-align: center;
+                    margin: 0 auto 40px auto;
+                    max-width: 190px;
+
+                    @media screen and (min-width: 767px) {
+                        max-width: 380px;
+                    }
+
+                    img {
+                        display: inline-block;
+                    }
+                }
+
+                p {
+                    .fontRobotoCondensed;
+                    max-width: 660px;
+                    margin: 20px auto 20px auto;
+                    line-height: 110%;
+
+                    @media screen and (min-width: 768px) {
+                        font-size: 32px;
+                    }
+
+                    @media screen and (max-width: 375px) {
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+
+        &.during {
+            .loginForm {
+                height: 100%;
+                display: table;
+                text-align: center;
+                color: #ffffff;
+
+                #account {
+                    display: table-cell;
+                    vertical-align: middle;
+                    height: 100%;
+
+                    &.logged-out-account {
+                        padding: 10px;
+                        position: relative;
+                        text-align: center;
+
+                        .img-responsive {
+                            margin: 0 auto;
+
+                            @media (max-width: 320px) {
+                                max-width: 60vw;
+                            }
+                        }
+
+                        .header-logo {
+                            text-align: center;
+                            margin: 0 auto 40px auto;
+                            max-width: 190px;
+
+                            @media screen and (min-width: 767px) {
+                                max-width: 380px;
+                            }
+
+                            img {
+                                display: inline-block;
+                            }
+                        }
+
+                        .loginFormOverride {
+                            margin: 0 auto;
+                            .fontRobotoCondensedBold;
+
+                            p {
+                                font-size: 13px;
+
+                                @media screen and (min-width: 767px) {
+                                    font-size: 16px;
+                                }
+                            }
+
+                            .logoutFormTitle {
+                                .fontRobotoCondensedBold;
+                                font-size: 36px !important;
+                                color: #ffffff !important;
+                                line-height: initial !important;
+                                text-align: center;
+                            }
+
+                            .RegisterButtonWrapper {
+                                margin: 15px 0;
+                                text-align: center;
+
+                                .modal-button-wrapper {
+                                    max-width: 148px;
+                                    width: 100%;
+
+                                    .modal-button-style {
+                                        max-width: 148px;
+                                        width: 100%;
+                                    }
+                                }
+                                @media (max-width: 425px) {
+                                    display: block;
+                                    margin: 10px auto;
+                                }
+                            }
+
+                            .loginButtonWrapper {
+                                .RegisterButtonWrapper;
+                            }
+
+                            .enPortal-fa {
+                                &.enPortal-fa-user-o {
+                                    padding-left: 2px;
+                                }
+                            }
+
+                            .formWrapper {
+                                margin: 0 auto;
+                                max-width: 450px;
+
+                                .goRightSecondLine {
+                                    padding-right: 0;
+                                }
+
+                                .input-group {
+                                    .form-control {
+                                        background: #fafebc !important;
+                                    }
+                                    .input-group-addon {
+                                        color: #000;
+                                    }
+                                }
+
+                                .enPortal-input-group {
+                                    margin: 10px 0;
+                                }
+
+                                .remember-me {
+                                    label {
+                                        margin: 0;
+                                        padding-left: 0;
+                                    }
+                                }
+
+                                .decorationUnderline {
+                                    color: #fff;
+                                    text-align: center;
+                                    text-transform: uppercase;
+                                }
+
+                                .logout-modal-help-page {
+                                    .decorationUnderline;
+                                }
+                                @media (max-width: 991px) {
+                                    .input-group {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .copyrightCopy {
+                        .fontRoboto;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .highlight {
+                color: #98eafc;
+            }
+
+            .header-logo {
+                text-align: center;
+                margin: 0 auto 40px auto;
+                max-width: 190px;
+
+                @media screen and (min-width: 767px) {
+                    max-width: 380px;
+                }
+
+                img {
+                    display: inline-block;
+                }
+            }
+
+            .header-p {
+                max-width: 1000px;
+                margin: 20px auto 40px auto;
+            }
+
+            p {
+                .fontRobotoCondensed;
+                color: #ffffff;
+                font-size: 22px;
+                line-height: 110%;
+
+                @media screen and (min-width: 768px) {
+                    font-size: 32px;
+                }
+            }
+
+            .loginButtonWrapper,
+            .RegisterButtonWrapper {
+                display: inline-block;
+                width: 110px;
+
+                @media screen and (min-width: 992px) {
+                    width: 160px;
+                }
+            }
+
+            h1 {
+                .fontRobotoBold;
+                font-size: 30px;
+                text-transform: capitalize;
+
+                @media screen and (min-width: 992px) {
+                    font-size: 48px;
+                }
+            }
+        }
+
+        &.soft {
+            .during;
+
+            .img-responsive {
+                @media (max-width: 414px) {
+                    max-width: 50vw;
+                }
+
+                @media (max-width: 320px) {
+                    max-width: 40vw !important;
+                }
+            }
+
+            .header-p {
+                .fontRobotoCondensedBold;
+                color: #98eafc;
+                font-size: 50px;
+                line-height: 110%;
+
+                @media screen and (max-width: 991px) {
+                    font-size: 44px;
+                }
+
+                @media screen and (max-width: 414px) {
+                    font-size: 20px;
+                }
+
+                @media (max-width: 375px) {
+                    font-size: 26px;
+                }
+            }
+
+            .subheader-p {
+                .fontRobotoCondensed;
+                font-size: 40px;
+                margin: 20px 0;
+                color: #fcbb30;
+                line-height: 110%;
+
+                @media screen and (max-width: 991px) {
+                    font-size: 34px;
+                }
+
+                @media screen and (max-width: 414px) {
+                    font-size: 22px;
+                    margin: 8px 0;
+                }
+            }
+            .body-subcopy {
+                font-size: 28px;
+                margin-bottom: 25px;
+            }
+
+            p {
+                .fontRobotoCondensed;
+                font-size: 32px;
+                line-height: 110%;
+
+                @media screen and (max-width: 991px) {
+                    font-size: 26px;
+                }
+
+                @media screen and (max-width: 414px) {
+                    font-size: 18px;
+                }
+            }
+
+            @media screen and (max-width: 320px) {
+                .loginFormOverride {
+                    .col-xs-6:last-child {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+
+                    .decorationUnderline {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        &.hard {
+            .pre-launch;
+
+            p {
+                font-size: 26px;
+
+                @media screen and (max-width: 991px) {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+    .displayFlex {
+        display: flex;
+    }
+
+    .clearBoth {
+        clear: both;
+    }
+
+    .positionRelative {
+        position: relative;
+    }
+
+    .centerMarginMagic {
+        margin: 0 auto;
+    }
+}
+
+#doregister {
+    .rewards-card-info {
+        color: #e51c23;
+        cursor: pointer;
+    }
+
+    .birthdate-info {
+        .rewards-card-info;
+    }
+
+    .optin-info {
+        .rewards-card-info;
+    }
+
+    .onresp {
+        .terms-label {
+            line-height: 1em;
+        }
+    }
+
+    .form-control {
+        font-size: 13px;
+    }
+
+    .form-control-ex {
+        color: #000000;
+        min-width: 78px;
+    }
+
+    .birthdate-spacer {
+        margin: 10px 0 20px 0;
+    }
+
+    .location-spacer {
+        .birthdate-spacer;
+    }
+
+    .self-exclusion-spacer {
+        margin-top: 20px;
+    }
+
+    .box-sm-body {
+        margin-bottom: 20px;
+    }
+
+    .modal-button-wrapper {
+        text-align: left;
+    }
+
+    .input-group-addon {
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+    .msg_box_error {
+        background-color: #600d09;
+        border-radius: 4px;
+        color: #fff;
+        padding: 10px;
+        text-shadow: 0 1px 0 #333;
+        margin-bottom: 10px;
+    }
+
+    .text-underline {
+        text-decoration: underline;
+    }
+}
+
+.height100 {
+    height: 100%;
+}
+
+html {
+    &.logged-out {
+        .height100;
+
+        body {
+            .height100;
+
+            .takeover {
+                .height100;
+
+                .container {
+                    &.main-container {
+                        .height100;
+
+                        #page_outer_wrap {
+                            .height100;
+
+                            #body_wrap {
+                                .height100;
+
+                                #page_wrap {
+                                    .height100;
+
+                                    .embed {
+                                        .height100;
+
+                                        #fzone {
+                                            .height100;
+
+                                            .rowAboveHeaderTheme {
+                                                margin-top: 0;
+                                            }
+
+                                            .rowBelowHeaderTheme {
+                                                .height100;
+                                                display: table;
+                                                width: 100%;
+                                                margin-left: 0;
+
+                                                #theme-display-logout-box {
+                                                    .height100;
+                                                    display: table;
+                                                    width: 100%;
+
+                                                    .loginForm {
+                                                        .height100;
+                                                        display: table;
+                                                        width: 100%;
+
+                                                        #account {
+                                                            .height100;
+                                                            display: table-cell;
+                                                            vertical-align: middle;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

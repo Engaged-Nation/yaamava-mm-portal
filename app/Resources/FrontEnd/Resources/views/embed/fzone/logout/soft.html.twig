@@ -1,0 +1,95 @@
+<div id="theme-display-logout-box" class="soft" style="display: none;">
+    <div class="loginForm col-md-12">
+        <div id="account" class="logged-out-account soft">
+            <div class="header-p">
+                THE MILLION DOLLAR MARCH MANIA PROMOTION IS NOW OVER
+            </div>
+            <div class="header-logo">
+                <div>
+                    <img class="img-responsive" src="{{ global_en_config.environment.s3_uploads_url ~ '/images/logos/loggedout/' ~ global_en_config.getClientAlias() ~ '-logo.png' }}" />
+                </div>
+            </div>
+            <div class="subheader-p"> The Championship Game Drawing is on [date and time]. Join us for a change to win your share of [xxxx]. Good luck!</div>
+            <p class="body-subcopy">To view your account, rewards and grand finale details, you can login below until [date]. We hope you enjoyed the program and look forward to seeing you at {{cname}} for the big event soon!</p>
+            <form class="loginFormOverride" id="dologin" method="get" autocomplete="off">
+                <div class="row transparent centerMarginMagic">
+                    <div class="col-md-12">
+                        <div class="formWrapper">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="username" placeholder="{{ 'fzone.me.logout.placeholders.username'|trans({}, 'frontend') }}" />
+                                <span class="input-group-addon" data-toggle="lbxtooltip" data-placement="left"
+                                      title="{{ 'fzone.me.logout.titles.username'|trans({}, 'frontend') }}">
+                                    <span class="fas fa-user" aria-hidden="true"></span>
+                                </span>
+                            </div>
+
+                            <div class="input-group">
+                                <input class="form-control" type="password" name="password" placeholder="{{ 'fzone.me.logout.placeholders.password'|trans({}, 'frontend') }}"/>
+                                <span class="input-group-addon forgotpassword showCursor" data-gtm-dimension="Logout/Forgot_Password_Icon" data-toggle="lbxtooltip" data-placement="left"
+                                      title="{{ 'fzone.me.logout.titles.forgotpassword'|trans({}, 'frontend') }}"><span class="fas fa-key"></span></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <p class="forgotpassword showCursor decorationUnderline" style="text-align: left">{{ 'fzone.me.logout.forgotpassword'|trans({}, 'frontend') }}</p>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-xs-12 goRightSecondLine">
+                                        <p class="logout-modal-help-page showCursor decorationUnderline" data-gtm-dimension="Logout Sitefeedback" style="text-align: right">Need Help?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loginButtonWrapper">
+                            <div class="modal-button-wrapper">
+                                <button type="submit" class="loginBtn modal-button-style">{{ 'fzone.me.logout.login'|trans({}, 'frontend') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" name="embed" value="login.register"/>
+                <input type="hidden" name="submit" value="true"/>
+                <input type="hidden" name="redirect" value="{{ returnlogreg }}"/>
+                <input type="hidden" name="action" value="login"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    EngagedNation.RequireJS.require(
+        ["jquery_1_10"],
+        function($)
+        {
+            $(function () {
+                $('body').css('padding-bottom', 0);
+            });
+
+            function setThemeDisplayLogoutBoxHeight() {
+                $('#theme-display-logout-box').height($(window).height());
+                $('#theme-display-logout-box .background-center').height($(window).height());
+            }
+
+            $('body').addClass('theme-display-on-logout');
+
+            var windowResizeOnTimeout;
+
+            $(window).on('resize', function() {
+                clearTimeout(windowResizeOnTimeout);
+                windowResizeOnTimeout = setTimeout(setThemeDisplayLogoutBoxHeight, 250);
+            });
+
+            setThemeDisplayLogoutBoxHeight();
+
+            $(
+                function() {
+                    $('#theme-display-logout-box').fadeIn(700);
+                }
+            )
+
+        }
+    )
+</script>

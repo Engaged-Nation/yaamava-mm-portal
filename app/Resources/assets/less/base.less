@@ -1,0 +1,257 @@
+@import (reference) "master.less";
+
+* {
+    box-sizing: border-box;
+}
+
+*:before, *:after{
+    box-sizing: border-box;
+}
+
+#engagednation-modal.iziModal-rendered .iziModal-wrap .iziModal-content {
+    background-color: #000;
+    border: none;
+}
+
+#engagednation-modal .iziModal-wrap .iziModal-content .iziModal-content-wrapper button.iziModal-button-close {
+    color: #000;
+}
+
+#engagednation-modal .iziModal-wrap .iziModal-content .iziModal-content-wrapper p {
+    color: #000;
+}
+
+.goCenter {
+    text-align:center;
+}
+
+.goGold {
+    color:#f4e08b !important;
+}
+
+.goRed {
+    color:#FF0000 !important;
+}
+
+.goOrange {
+    color:#FFA500 !important;
+}
+
+.goWhite {
+    color:#FFF !important;
+}
+
+.lime {
+    color:lime;
+}
+
+.displayNone {
+    display: none !important;
+}
+
+.showCursor {
+    cursor: pointer;
+}
+
+.spacer {
+    padding-top: 9px;
+    border-bottom: 1px none;
+    margin-bottom: 5px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.transition {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.doZoom {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+}
+
+#user-anim-points {
+    color: #000;
+    font-size: 80px;
+    .fontRobotoBold;
+    display: none;
+    line-height: 45px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0 2px 0 #333;
+    z-index: 9876543211;
+
+    .uap- {
+        display: inline-block;
+
+        &.plus {
+            color: lime;
+        }
+        &.minus {
+            color: red;
+        }
+
+        .sm {
+            font-size: 25px;
+            margin-top: 15px;
+        }
+    }
+}
+
+.centerOnTablet{
+    text-align: left;
+
+    @media (max-width:991px){
+        text-align:center;
+    }
+}
+
+.text-link {
+    color: #1372a8;
+    cursor: pointer;
+    text-decoration: underline !important;
+
+    &:hover {
+        color: #033d68;
+        text-decoration: underline !important;
+    }
+
+    &:active {
+        color: #1372a8;
+        text-decoration: underline !important;
+    }
+
+    &:focus {
+        color: #033d68;
+        text-decoration: underline !important;
+        outline: none;
+    }
+}
+
+hr {
+    &.lineFade {
+        border: 0;
+        height: 2px;
+        margin:20px auto;
+        position:relative;
+        width: 80%;
+        background: @marchmania-lightblue;
+        background: -moz-linear-gradient(left, #000000 0, @marchmania-lightblue 25%, #56ddff 51%, @marchmania-lightblue 75%, #000000 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,#000000), color-stop(25%,@marchmania-lightblue), color-stop(51%,#56ddff), color-stop(75%,@marchmania-lightblue), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left, #000000 0,@marchmania-lightblue 25%,#56ddff 51%,@marchmania-lightblue 75%,#000000 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left, #000000 0,@marchmania-lightblue 25%,#56ddff 51%,@marchmania-lightblue 75%,#000000 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left, #000000 0,@marchmania-lightblue 25%,#56ddff 51%,@marchmania-lightblue 75%,#000000 100%); /* IE10+ */
+        background: linear-gradient(to right, #000000 0,@marchmania-lightblue 25%,#56ddff 51%,@marchmania-lightblue 75%,#000000 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+    }
+}
+
+#leaderboard-content {
+    .leaderboard-display {
+        .blue-title-after-header {
+            padding-top: 10px;
+        }
+
+        .most-correct-picks-title {
+            .fontRobotoBold;
+            font-size: 40px;
+            color: #000000;
+            display: none;
+        }
+
+        .leaderboard-body-list {
+            .leaderboard-top-list {
+                border: none;
+                background: #fff;
+
+                .leaderboard-top-position {
+                    background: #000 !important;
+                    border: none;
+                    color: #ffad3f;
+                    .fontRobotoBold;
+
+                    sup {
+                        text-transform: uppercase;
+                    }
+
+                    .leaderboard-top-position-icon {
+                        display: inline-block
+                    }
+                }
+
+                .leaderboard-top-name {
+                    .list-group {
+                        .list-group-item {
+                            color: #000;
+                            .fontRobotoBold;
+
+                            .leaderboard-user-ranking {
+                                text-transform: uppercase;
+                            }
+
+                            .badge {
+                                background-color: #000;
+                                color: #fff;
+                                .fontRobotoBold;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .list-group {
+                .list-group-item {
+                    .badge {
+                        background-color: #000;
+                        color: #000;
+                        .fontRobotoBold;
+                    }
+                }
+            }
+
+            .leaderboard-off-rank {
+                .fontRobotoBold;
+                color: #000;
+
+                .leaderboard-subheader-user-rank {
+                    .fontRobotoBold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .leaderboard-footer {
+                .leaderboard-off-rank {
+                    .fontRoboto;
+                    color: #000;
+
+                    .simple-modal {
+                        color: #1782bb;
+                        text-decoration: underline;
+                        font-size: 18px;
+                    }
+
+                    a {
+                        color: #1782bb;
+                        text-decoration: underline !important;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

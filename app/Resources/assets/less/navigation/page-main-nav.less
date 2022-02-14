@@ -1,0 +1,329 @@
+@import (reference) "../master.less";
+
+#page-main-nav {
+    background-color: @background-color;
+    border: none;
+    max-width: 1170px;
+    margin: 0 auto;
+
+
+    .container {
+        @media (min-width: 992px) {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            width: 100%;
+        }
+
+        #page-main-nav-links {
+            .nav-justified > li {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .nav {
+                .visible-xs {
+                    a {
+                        font-size: 16px;
+                        cursor: pointer;
+                        margin: 2% 0;
+
+                        &:hover {
+                            color: @hover-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .navbar-header {
+            .navbar-toggle {
+                margin-top: 30px;
+            }
+
+            @media screen and (max-width: 767px) {
+                height: 95px;
+                background: url("@{configS3Url}images/logos/March-Mania-noclient.png") 5px center / 110px no-repeat;
+            }
+        }
+    }
+
+    .navbar-brand {
+        padding: 5px;
+        margin-top: 5px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .nav {
+        li {
+            cursor: pointer;
+
+            .btn-nav {
+                border: none;
+                font-size: inherit;
+                color: inherit;
+                background: none;
+                cursor: pointer;
+                padding: 15px 0;
+                display: inline-block;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 700;
+                outline: none;
+                position: relative;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                transition: all 0.3s;
+
+                &:after {
+                    position: absolute;
+                    z-index: -1;
+                    -webkit-transition: all 0.3s;
+                    -moz-transition: all 0.3s;
+                    transition: all 0.3s;
+                }
+
+                &:before {
+                    text-transform: none;
+                    line-height: 1;
+                    position: relative;
+                    -webkit-font-smoothing: antialiased;
+                }
+            }
+
+            .btn-nav-hideIcon {
+                height: 55px;
+                line-height: 1.4em;
+                font-size: 16px;
+                overflow: hidden;
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                backface-visibility: hidden;
+
+                span {
+                    .fontFiraSansBold;
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    -webkit-transition: all 0.3s;
+                    -webkit-backface-visibility: hidden;
+                    -moz-transition: all 0.3s;
+                    -moz-backface-visibility: hidden;
+                    transition: all 0.3s;
+                    backface-visibility: hidden;
+                }
+
+                &:before {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    line-height: 2em;
+                    font-size: 180%;
+                    -webkit-transition: all 0.3s;
+                    -moz-transition: all 0.3s;
+                    transition: all 0.3s;
+                }
+            }
+
+            .btn-nav-showIcon {
+                &:hover {
+                    color: @hover-color;
+
+                    span {
+                        -webkit-transform: translateY(300%);
+                        -moz-transform: translateY(300%);
+                        -ms-transform: translateY(300%);
+                        transform: translateY(300%);
+                    }
+
+                    &:before {
+                        top: 0;
+                    }
+                }
+
+                &:before {
+                    left: 0;
+                    top: -100%;
+                }
+            }
+
+            a {
+                text-align: center;
+                color: #FFFFFF;
+                .fontOpenSans;
+                text-transform: uppercase;
+                font-size: 18px;
+                padding: 8px 0 3px 0;
+                cursor: url('@{configS3Url}images/cursor_basketball.png') 10 10, pointer;
+                text-decoration: none;
+
+                @media (max-width: 991px) {
+                    font-size: 11px;
+                }
+
+                span {
+                    &.fa {
+                        font-size: 17px;
+                        height: 17px;
+                    }
+                    &.fas {
+                        .fa;
+                    }
+                    &.fad {
+                        .fa;
+                    }
+
+                    @media (min-width: 768px) {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                span.fa-caret-down, .en-user-first-name {
+                    display: inline-block;
+                    margin-top: -5px;
+                }
+
+                &:hover {
+                    background-color: transparent;
+                    color: @hover-color;
+                }
+
+                button {
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: transparent;
+                        color: @hover-color;
+
+                        span {
+                            &.fa {
+                                font-size: 18px;
+                                height: 18px;
+
+                                @media (max-width: 768px) {
+                                    font-size: 17px;
+                                    height: 17px;
+                                }
+                            }
+                            &.fas {
+                                .fa;
+                            }
+                            &.fad {
+                                .fa;
+                            }
+                            &.fa-caret-down {
+                                font-size: 17px;
+                                height: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                .btn-nav-showIcon {
+                    &:hover {
+                        &:before {
+                            color: @active-color;
+                        }
+                    }
+                }
+
+                a {
+                    background: transparent;
+                    color: @hover-color;
+
+                    span {
+                        &.fa {
+                            font-size:18px;
+                            height: 18px;
+
+                            @media (max-width: 768px) {
+                                font-size:17px;
+                                height: 17px;
+                            }
+                        }
+                        &.fas {
+                            .fa;
+                        }
+                        &.fad {
+                            .fa;
+                        }
+                        &.fa-caret-down {
+                            font-size: 17px;
+                            height: 17px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .open {
+            > a {
+                background-color: transparent;
+                color: @hover-color;
+
+                span {
+                    &.fa {
+                        font-size:18px;
+                        height: 18px;
+                    }
+                    &.fas {
+                        .fa;
+                    }
+                    &.fad {
+                        .fa;
+                    }
+                    &.fa-caret-down {
+                        font-size: 17px;
+                        height: 17px;
+                    }
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        .dropdown-toggle {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+
+            &:hover {
+                color: @hover-color;
+            }
+
+            button {
+                min-width: 30px;
+            }
+        }
+
+        .dropdown-menu {
+            background-color: @active-color;
+            right: 0;
+
+            li {
+                a {
+                    color: #FFFFFF;
+
+                    &:hover {
+                        background-color: @background-color;
+                        color: @hover-color;
+                    }
+                }
+
+                &.active {
+                    a {
+                        background: @active-color;
+                        color: @hover-color;
+                    }
+                }
+            }
+        }
+    }
+}

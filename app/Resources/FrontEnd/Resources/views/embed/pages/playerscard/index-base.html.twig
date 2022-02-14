@@ -1,0 +1,48 @@
+{% block playerscardForm %}
+    <div class="enPortal-row">
+        <div class="enPortal-col-md-5">
+            <img class="enPortal-img-responsive" src="{{ s3url }}/images/playersCard-small.png" />
+        </div>
+        <div class="enPortal-col-md-7">
+            <div style="display: table;">
+                <div style="display: table-cell; vertical-align: middle; height: 140px; font-size:22px;">
+                    <p style="margin:0;" class="goGold">Player: <span class="goWhite normalTxt">{{ userName }}</span></p>
+                    <p class="goGold">{{ program }} Points: <span class="goWhite normalTxt">13,075</span></p>
+                    <button id="directmailButton" name="directmail" class="enPortal-button directmail" style="max-width:initial;" data-gtm-dimension="View Direct Mail Rewards">VIEW DIRECT MAIL REWARDS</button>
+                </div>
+            </div>
+        </div>
+        <div class="goCenter">
+            <div>
+                {% block redeemSpacer %}
+                    <div class="gborder-right enPortal-visible-lg" style="height: 141px; width: 5px;"></div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        EngagedNation.RequireJS.require(
+            ["jquery_1_10"],
+            function($)
+            {
+                var id = '#directmailButton';
+                var rewardValetParking = '<div class="enPortal-col-md-4"><div class="directMailBox"><h3>Valet Parking</h3><p>Valid until 12/31/2017</p></div></div>';
+                var rewardFreePlay10 = '<div class="enPortal-col-md-4"><div class="directMailBox"><h3>$10 FreePlay</h3><p>Valid until 08/01/2017</p></div></div>';
+                var rewardBOGODinner = '<div class="enPortal-col-md-4"><div class="directMailBox"><h3>BOGO Dinner</h3><p>Valid until 09/17/2017</p></div></div>';
+
+                $(function(){
+                    EngagedNation.Callback = EngagedNation.Callback || {};
+                    if (!EngagedNation.Callback.hasOwnProperty('directmail')) {
+                        EngagedNation.Callback.directmail = function () {
+                            $.lbxgrid({html: '<div class="enPortal-row">' + rewardValetParking + rewardFreePlay10 + rewardBOGODinner + '</div>'});
+                        }
+                    }
+
+                    $(id).off('click', EngagedNation.Callback.directmail);
+                    $(id).on('click', EngagedNation.Callback.directmail);
+                });
+            }
+        );
+    </script>
+{% endblock %}

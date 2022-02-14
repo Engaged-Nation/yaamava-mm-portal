@@ -1,0 +1,56 @@
+{% extends 'FrontEnd/Resources/views/embed/fzone/contents/includes/pick4/index/base.html.twig' %}
+
+{% block header %}
+{% endblock header %}
+
+    {% block game %}
+        {% if item is empty %}
+            {{ nogame }}
+        {% elseif data is empty %}
+            {% set imgActive = item.img_active|split(',') %}
+            {% set imgHover = item.img_hover|split(',') %}
+            <div class="pick4">
+                <div class="pick4- {{ class }}">
+                    <p style="font-size: 18px; margin: 0;">
+                        {% if item.description is empty %}
+                            {{ 'fzone.pick4Promo.description'|trans({'%points%': points}, 'frontend')|raw }}
+                        {% else %}
+                            {{ item.description }}
+                        {% endif %}
+                    </p>
+                    <div class="content-">
+                        <div class="enPortal-row">
+                            {% for src in imgActive %}
+                                <div class="enPortal-col-sm-3">
+                                    <div class="item {{ class }}" data-rel="{{ loop.index0 }}" style="opacity: 1;">
+                                        <img class="img-active enPortal-img-responsive" src="{{ s3url ~ 'active/' ~ src }}"
+                                             style="opacity:1; max-width: 177px;"/>
+                                        <img class="img-hover enPortal-img-responsive" src="{{ s3url ~ 'hover/' ~ imgHover[loop.index0] }}" style="position: absolute; z-index: 1; opacity: 0; top: 0px; max-width: 177px;"/>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="response" style="color:#FFFFFF; text-shadow: 0px 0px 5px #000000; font-size:22px;"></div>
+                </div>
+            </div>
+        {% else %}
+            <p style="color:#FFFFFF; text-shadow: 0px 0px 5px #000000; font-size:22px;">Thank you for playing!<br /> You were awarded {{ awarded }} {{ points }} {{ msg_dblng }}</p>
+        {% endif %}
+
+        <script>
+            EngagedNation.RequireJS.require(
+                ["jquery_1_10"],
+                function($)
+                {
+                    EngagedNation.Config = EngagedNation.Config || {};
+                    EngagedNation.Config.InstantRewardComponentName = 'pick4';
+                    EngagedNation.Config.InstantRewardComponentId = '{{ (item) ? item.id|e('js') : '' }}';
+
+                    $('.engagedNation .lbxgrid .lbxgrid-wrapper .lbxgrid-content.bg').css('background-image', 'url({{ s3url|e("js") }}pick4_bg.png)');
+                    $('.engagedNation .lbxgrid .lbxgrid-wrapper .lbxgrid-content.bg').css('background-size', 'cover');
+                    $('.engagedNation .lbxgrid .lbxgrid-wrapper .lbxgrid-content.bg').css('background-repeat', 'no-repeat');
+                }
+            );
+        </script>
+    {% endblock game %}

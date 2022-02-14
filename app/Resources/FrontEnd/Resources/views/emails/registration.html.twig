@@ -1,0 +1,96 @@
+{% extends 'FrontEnd/Resources/views/emails/base/base-registration.html.twig' %}
+
+{% set brandColor = '#000000' %}
+
+{% block headerContainer %}
+    {% include 'FrontEnd/Resources/views/emails/header.html.twig' %}
+{% endblock %}
+
+{% block bodyContainer %}
+    <table align="center" style="background-color:#ffffff; font-family: 'Gotham-Book', sans-serif;">
+        <tr>
+            <td>
+                {% block bodyContent %}
+                    <table width="100%" cellpadding="10px">
+                        <tr>
+                            <td align="center">
+                                <span class="emailHeader" style="font-size:2.4em; font-weight:bold; color:#000000; font-family: 'Gotham-Bold', sans-serif; text-align: center;">{{ 'emailConfirmation.body.header'|trans({'%points_per_register%': pointsPerRegister|number_format, '%fname%': firstName}, 'frontend')|raw }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table cellpadding="5px">
+                                    <tr>
+                                        <td>
+                                            <span>
+                                                Get ready for big fun and prizes throughout the men's college basketball tournament with our <em>$2 Million Dollar March Mega Mania Tournament!</em>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Click the button below to activate your account and <span style="font-family: 'Gotham-Bold', sans-serif">get immediate access to:</span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table align="center" width="80%">
+                                                <tr>
+                                                    <td>&#183; <span style="font-family: 'Gotham-Bold', sans-serif">$2,000,000 Dollar Brackets</span> - Pick your favorite teams for a shot at becoming a multi-millionaire!</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&#183; <span style="font-family: 'Gotham-Bold', sans-serif">100% <em>FREE</em> Games</span> - Win exciting rewards by playing <em>Skeeball</em>, <em>Puzzle</em> and more.</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            And that's just the start! <br><br>
+                                            The more you play, the more chances you have to win, so log in daily and have fun!
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <table align="center" cellpadding="20px">
+                                                <tr>
+                                                    <td style="background-color:{{ brandColor }}; padding: 20px;">
+                                                        <a title="Confirm Now" href="{{ confirmLink }}" style="color: #ffffff; font-weight: bold; text-decoration: none;" target="_other" rel="nofollow">
+                                                            CONFIRM AND PLAY NOW
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="font-size: 0.8em">
+                                <table>
+                                    <tr>
+                                        <td align="center" style="font-size: 0.6em; padding-top: 20px">
+                                            Having trouble confirming your email address? Copy and paste the link below into the address bar of your browser:
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <a href="{{ confirmLink }}" target="_blank" rel="nofollow">{{ confirmLink }}</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                {% endblock %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,25 @@
+{
+    "less": {
+        "filters" : ["LessFilter", "Yui\\CssCompressorFilter"],
+        "debug": {
+            "filters": ["LessFilter"]
+        },
+        "collections": [
+            {
+                "files": [
+                    "app/Resources/assets/less/brackets.less",
+                    "vendor/engaged-nation/portal-core/FrontEnd/Resources/public/less/themed/layout.less",
+                    "vendor/engaged-nation/portal-core/FrontEnd/Resources/public/less/themed/fresh/index.less"
+                ],
+                "output": "www/css/base.css"
+            },
+            {
+                "files": [
+                    "vendor/engaged-nation/portal-core/FrontEnd/Resources/public/less/vendor/lbxgrid-no-namespace.less"
+                ],
+                "output": "www/css/admin/lbxgrid.css"
+            }
+        ]
+    },
+    "css": {}
+}

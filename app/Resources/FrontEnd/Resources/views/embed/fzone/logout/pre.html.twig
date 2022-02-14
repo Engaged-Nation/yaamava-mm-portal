@@ -1,0 +1,50 @@
+<div id="theme-display-logout-box" class="pre-launch" style="display: none;">
+    <div class="loginForm col-md-12">
+        <div id="account" class="logged-out-account">
+            <div class="header-logo">
+                <img class="img-responsive" src="{{ global_en_config.environment.s3_uploads_url ~ '/images/logos/loggedout/' ~ global_en_config.getClientAlias() ~ '-logo.png' }}" />
+            </div>
+
+            <p>
+                Sign up between <span class="highlight">3/5 through 3/18</span>
+                for your chance to win <span class="highlight">$1 Million</span> for filling out a perfect bracket and your share of $___ thousand in guaranteed cash and prizes.
+            </p>
+
+            <h1 class="header-p">IT’S A SLAM DUNK NO BRAINER!</h1>
+            <div class="subheader-p">
+                <iframe id="countDownTimer"
+                    src="{{ global_en_config.environment.s3_uploads_url ~ '/iframe/countdown/countdown-v1.html?v=' ~ 'now'|date('ymdHis') }}"
+                    width="100%" height="130" frameborder="0" scrolling="no">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    EngagedNation.RequireJS.require(
+        ["jquery_1_10"],
+        function($)
+        {
+            $(function () {
+                $('body').css('padding-bottom', 0);
+            });
+            function setThemeDisplayLogoutBoxHeight() {
+                $('#theme-display-logout-box').height($(window).height());
+                $('#theme-display-logout-box .background-center').height($(window).height());
+            }
+            $('body').addClass('theme-display-on-logout');
+            var windowResizeOnTimeout;
+            $(window).on('resize', function() {
+                clearTimeout(windowResizeOnTimeout);
+                windowResizeOnTimeout = setTimeout(setThemeDisplayLogoutBoxHeight, 250);
+            });
+            setThemeDisplayLogoutBoxHeight();
+            $(
+                function() {
+                    $('#theme-display-logout-box').fadeIn(700);
+                }
+            )
+        }
+    )
+</script>

@@ -1,0 +1,119 @@
+@import (reference) "../master.less";
+
+#page-footer {
+    font-size: 16px;
+    color: #fff;
+    .fontRobotoBold;
+    padding-bottom: 20px;
+    margin-top: -42px;
+    position: relative;
+    z-index: 5;
+
+    .footer-spacer {
+        height: 10px;
+    }
+
+    .page-footer-row-1 {
+        .fontRoboto;
+        margin: 0;
+        padding: 20px 0;
+        font-size: 16px;
+        text-transform: uppercase;
+
+        img {
+            margin-bottom:10px;
+        }
+
+        .page-footer-row-1-inner-wrapper {
+            max-width: 1170px;
+            margin: 0 auto;
+            text-align: center;
+
+            .col-md-4 {
+                text-align:center;
+
+                .linksWrapper {
+                    text-align: left;
+                    display:inline-block;
+                }
+            }
+
+            .body-p-nocaps {
+                text-transform: initial;
+            }
+
+            a {
+                color: #FFFFFF;
+                cursor: url('@{configS3Url}images/cursor_basketball.png') 10 10, pointer;
+
+                &:hover {
+                    text-decoration: none;
+                    color: @hover-color;
+                }
+            }
+        }
+
+        @media (max-width: 895px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 425px) {
+            display: none;
+        }
+    }
+
+    .page-footer-row-2 {
+        max-width: 1170px;
+        margin: 0 auto;
+
+        .page-footer-row-2-inner-wrapper {
+            .fontRoboto;
+            margin: 0 auto;
+            padding: 10px;
+            background: #000;
+            max-width: 1170px;
+            font-size: 14px;
+            text-align: center;
+
+            .addressOutterWrapper {
+                position: relative;
+                display: table;
+                width: 100%;
+
+                @media (max-width: 767px) {
+                    display: block;
+                    height: auto;
+                }
+
+                .addressInnerWrapper {
+                    height: 130px;
+                    vertical-align: middle;
+                    display: table-cell;
+
+                    @media (max-width: 767px) {
+                        display: block;
+                        height: auto;
+                    }
+                }
+            }
+
+            .copyrightOutterWrapper {
+                .addressOutterWrapper;
+
+                .copyrightInnerWrapper {
+                    .addressOutterWrapper .addressInnerWrapper;
+                }
+            }
+
+            a {
+                color: #FFFFFF;
+
+                img {
+                    display: inline-block;
+                    max-height: 75px;
+                    .fluid-type(width, 320px, 1024px, 200px, 315px);
+                }
+            }
+        }
+    }
+}

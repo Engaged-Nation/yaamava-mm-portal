@@ -1,0 +1,128 @@
+@import (reference) "master.less";
+
+#brackets-overview {
+    .brackets-leaderboards-navi, .brackets-leaderboards-list {
+        display:none;
+    }
+
+    .brackets-page-title {
+        .fontRobotoBold;
+        color: #F4E08B;
+        margin-bottom: 10px;
+        line-height: 1em;
+        .fluid-type(font-size, 320px, 1024px, 18px, 40px);
+    }
+
+    .brackets-page-body {
+        .fontRoboto;
+        color: #FFFFFF;
+        margin-bottom: 40px;
+        line-height: 1.2em;
+        .fluid-type(font-size, 320px, 1024px, 14px, 24px);
+    }
+
+    .brackets-box {
+        .brackets-col-view {
+            .modal-button-wrapper {
+                .modal-button-style {
+                    color: #FFFFFF;
+                }
+            }
+        }
+
+        .brackets-col-download {
+            .brackets-download {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .brackets-available-row {
+        margin-left: -30px;
+
+        @media(max-width: 991px) {
+            margin-left: 0;
+        }
+    }
+
+    .brackets-available-wrapper {
+        padding-left: 0;
+        margin-left: -15px;
+
+        @media(max-width: 991px) {
+            padding-left: 15px;
+            margin-left: 0;
+        }
+    }
+}
+
+.engagedNation {
+    #fzone {
+        #activityTab {
+            #game-brackets {
+                .game-brackets-header {
+                    .game-brackets-header-body {
+                        button {
+                            width: 235px;
+                            margin: 0 15px 15px 0;
+                        }
+                    }
+                }
+
+                .content-brackets-body {
+                    .btn-primary {
+                        &:hover {
+                            color: #FFFFFF;
+                        }
+                    }
+                }
+
+                &.content-brackets {
+                    .brackets-finals {
+                        .brackets-finals-body {
+                            .btn {
+                                background-image: linear-gradient(to bottom, #033d68 32%, #1782bb 99%), linear-gradient(to right, #a4a4a4 0, #e1e1e1 13%, #bebebe 29%, #ffffff 43%, #a9a9a9 64%, #ffffff 80%, #979797 100%);
+                                background-origin: border-box;
+                                background-clip: content-box, border-box;
+                                color: #FFFFFF;
+
+                                &.selected {
+                                    background-image: linear-gradient(180deg, #df6603 32%, #df6603 99%), linear-gradient(90deg, #a4a4a4 0, #e1e1e1 13%, #bebebe 29%, #fff 43%, #a9a9a9 64%, #fff 80%, #979797);
+                                }
+                            }
+                        }
+                    }
+
+                    .btn {
+                        padding: 0;
+                        border-style: solid;
+                        border-width: 3px;
+                        border-image-source: linear-gradient(to right, #a4a4a4 0, #e1e1e1 13%, #bebebe 29%, #ffffff 43%, #a9a9a9 64%, #ffffff 80%, #979797 100%);
+                        border-image-slice: 0;
+                        line-height: 1 !important;
+
+                        &.selected {
+                            background-image: linear-gradient(180deg, #df6603 32%, #df6603 99%), linear-gradient(90deg, #a4a4a4 0, #e1e1e1 13%, #bebebe 29%, #fff 43%, #a9a9a9 64%, #fff 80%, #979797);
+                        }
+
+                        .brackets-team-rank {
+                            color: #0e6498;
+                            background-color: #FFFFFF;
+                            text-shadow: none;
+                            border: solid 1px #0e6498;
+                        }
+                    }
+
+                    .brackets-finals-result {
+                        .btn {
+                            border-style: solid;
+                            border-width: 3px;
+                            border-image-source: linear-gradient(to right, #a4a4a4 0, #e1e1e1 13%, #bebebe 29%, #ffffff 43%, #a9a9a9 64%, #ffffff 80%, #979797 100%);
+                            border-image-slice: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{% extends 'FrontEnd/Resources/views/embed/pages/playerscard/index-base.html.twig' %}
+
+{% block playerscardForm %}
+    <form id="playerscardform" autocomplete="off">
+        <div class="enPortal-row">
+            <div class="enPortal-col-md-6">
+                <h3 class="goGold">Players Card Verification</h3>
+                <div style="overflow: hidden; height: 0px;">
+                    <input type="text"/>
+                    <input type="password"/>
+                </div>
+                <input type="text" class="enPortal-form-control" placeholder="Players Card Number" name="playerscard">
+                <input type="password" class="enPortal-form-control" placeholder="Pin Number" name="pin">
+            </div>
+            <div class="enPortal-col-md-6">
+                <span class="profile">
+                    <span class="-points">
+                        <span class="-value uPointsTotal">{{ userpoints }}</span>
+                        <span class="sm">{{ points }}</span>
+                    </span>
+                </span>
+                <div class="goCenter topmarg10">
+                    <input type="submit" class="enPortal-button bigonsmall" value="Verify" style="display: inline-block;"/>&nbsp;
+                    <button type="button" class="enPortal-button pcv-info" style="display: inline-block; width: 30px; padding-left: 0px; padding-right: 0px;" data-gtm-dimension="PlayerCardVerification/Help">?</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
