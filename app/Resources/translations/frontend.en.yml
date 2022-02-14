@@ -531,7 +531,7 @@ fzone:
   #
   termsAndCondtions:
     input1: '<p class="system-message-body">I agree to the
-        <a class="terms-and-conditions-link" href="https://s3-us-west-2.amazonaws.com/marchmania-uploads/images/pdf/rules-terms.pdf" target="_blank">
+        <a class="terms-and-conditions-link" href="https://s3-us-west-2.amazonaws.com/yaamava-mm-uploads/images/pdf/rules-terms.pdf" target="_blank">
           terms and conditions.
         </a>
       </p>'
