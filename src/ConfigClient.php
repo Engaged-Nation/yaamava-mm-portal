@@ -42,6 +42,6 @@ class ConfigClient extends AbstractConfigClient
      */
     public static function getClientAlias()
     {
-        return 'marchmania';
+        return 'yaamava-mm';
     }
 }
