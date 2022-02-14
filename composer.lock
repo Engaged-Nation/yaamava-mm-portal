@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a4c76ce3f3cd7f2eef423c1662b7c36",
+    "content-hash": "371dbd4f2e4d24f8dd506f42e7189e66",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1062,12 +1062,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Engaged-Nation/doctrine-portal.git",
-                "reference": "115fec7975a82c690729c5a4c4ba2e1c6a99c0c2"
+                "reference": "037eb43c3fc5ebb4554b9234668ed5a106c663ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Engaged-Nation/doctrine-portal/zipball/115fec7975a82c690729c5a4c4ba2e1c6a99c0c2",
-                "reference": "115fec7975a82c690729c5a4c4ba2e1c6a99c0c2",
+                "url": "https://api.github.com/repos/Engaged-Nation/doctrine-portal/zipball/037eb43c3fc5ebb4554b9234668ed5a106c663ba",
+                "reference": "037eb43c3fc5ebb4554b9234668ed5a106c663ba",
                 "shasum": ""
             },
             "require": {
@@ -1075,7 +1075,6 @@
                 "php": ">=5.5.9",
                 "zircote/swagger-php": "^2.0"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
                 "psr-4": {
@@ -1095,7 +1094,7 @@
                 "source": "https://github.com/Engaged-Nation/doctrine-portal/tree/master",
                 "issues": "https://github.com/Engaged-Nation/doctrine-portal/issues"
             },
-            "time": "2022-01-31T17:31:03+00:00"
+            "time": "2022-02-14T19:38:26+00:00"
         },
         {
             "name": "engaged-nation/lib-central-admin-client",
@@ -1117,7 +1116,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^6.0"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
                 "psr-4": {
@@ -1156,7 +1154,6 @@
                 "phpunit/phpunit": "^5.6",
                 "symfony/symfony": "3.2.*"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
                 "psr-4": {
@@ -1204,7 +1201,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^6.0"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
                 "psr-4": {
@@ -1227,12 +1223,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Engaged-Nation/portal-core.git",
-                "reference": "a93231b1a9205d5bd99d24abd7a00a10ee99e44c"
+                "reference": "d3b96675dcb887d1f518714b16d63e1140d662d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Engaged-Nation/portal-core/zipball/a93231b1a9205d5bd99d24abd7a00a10ee99e44c",
-                "reference": "a93231b1a9205d5bd99d24abd7a00a10ee99e44c",
+                "url": "https://api.github.com/repos/Engaged-Nation/portal-core/zipball/d3b96675dcb887d1f518714b16d63e1140d662d1",
+                "reference": "d3b96675dcb887d1f518714b16d63e1140d662d1",
                 "shasum": ""
             },
             "require": {
@@ -1263,7 +1259,6 @@
                 "consolidation/robo": "^1.0",
                 "phpunit/phpunit": "^5.6"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
                 "psr-4": {
@@ -1284,7 +1279,7 @@
                 "source": "https://github.com/Engaged-Nation/portal-core/tree/master",
                 "issues": "https://github.com/Engaged-Nation/portal-core/issues"
             },
-            "time": "2022-02-08T18:02:58+00:00"
+            "time": "2022-02-14T21:17:56+00:00"
         },
         {
             "name": "grasmash/expander",
