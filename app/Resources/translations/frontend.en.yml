@@ -664,3 +664,9 @@ tournament:
         </p>"
       simple_modal_body2: ""
       simple_modal_body3: ""
+
+system:
+  session:
+    timeout: '<h1 class="text-center mb-3">REFRESHING YOUR EXPERIENCE</h1>
+      <p class="text-center mb-0">Please wait for a few moments while the latest updates are applied to your account.</p>
+      <div class="spinner text-center"><img class="img-fluid" src="%s3Url%/images/basketball-load-spinner.svg" /></div>'
